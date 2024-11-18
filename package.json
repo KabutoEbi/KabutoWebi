@@ -10,8 +10,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://kabutoebi.github.io/KabutoWebi/"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,4 +41,5 @@
   "devDependencies": {
     "gh-pages": "^6.2.0"
   }
+ "homepage": "https://kabutoebi.github.io/KabutoWebi/"
 }
