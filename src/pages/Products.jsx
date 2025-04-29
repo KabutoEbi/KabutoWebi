@@ -11,6 +11,14 @@ const Products = () => {
             </div>
 
             <Product
+                Name="KabutoWebi"
+                description="あなたが見ているこのサイト。"
+            />
+            <div className="mb-4 text-xl">
+                <a href="https://github.com/KabutoEbi/KabutoWebi" target="_blank" rel="noopener noreferrer">GitHub→</a>
+            </div>
+
+            <Product
                 Name="Body Balancer"
                 description="座布団に座るだけで体の姿勢状況を測定するデバイスです。"
             />
