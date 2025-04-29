@@ -11,7 +11,7 @@ const Footer = () => {
                     <p>|</p>
                     <li><a href="https://atcoder.jp/users/KabutoEbi" target="_blank" rel="noopener noreferrer">AtCoder</a></li>
                     <p>|</p>
-                    <li><a href="https://x.com/KabutoEbi_mp3" target="_blank" rel="noopener noreferrer">Twitter(旧X)</a></li>
+                    <li><a href="https://x.com/KabutoEbi_mp3" target="_blank" rel="noopener noreferrer">X</a></li>
                 </ul>
             </div>
             <p>KabutoEbi + Web = KabutoWebi</p>
