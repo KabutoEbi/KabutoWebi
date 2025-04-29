@@ -7,8 +7,8 @@ const Notifications = () => {
             <div className="mt-4 h-48 overflow-y-scroll rounded ml-5 mr-5">
                 <ul className="text-xl text-left bg-green-200 leading-loose p-5">
                     <li className="border-b border-green-400">2025年04月29日 Productsを更新</li>
+                    <li className="border-b border-green-400">2025年04月29日 Productsを更新</li>
                     <li className="border-b border-green-400">2025年04月29日 サイトを公開</li>
-                    <li className="border-b border-green-400">-</li>
                     <li className="border-b border-green-400">-</li>
                     <li className="border-b border-green-400">-</li>
                     <li className="border-b border-green-400">-</li>

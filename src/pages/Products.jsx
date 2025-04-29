@@ -19,6 +19,14 @@ const Products = () => {
             </div>
 
             <Product
+                Name="賽の河原の石積み"
+                description="自作ゲームです。たくさん石を壊しましょう。"
+            />
+            <div className="mb-4 text-xl">
+                <a href="https://github.com/KabutoEbi/StackStones" target="_blank" rel="noopener noreferrer">GitHub→</a>
+            </div>
+
+            <Product
                 Name="veryfunny"
                 description="とてもおもしろい"
             />
