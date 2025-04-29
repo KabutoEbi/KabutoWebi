@@ -12,7 +12,7 @@ const About = () => {
                     <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-600 p-4">自己紹介</p>
                     <div className="my-4">
                         <p>KabutoEbi</p>
-                        <p>プログラミン･ロードバイク･1人旅が趣味</p>
+                        <p>プログラミング･ロードバイク･1人旅が趣味</p>
                         <p>高専3年生</p>
                         <p>電気情報工学科(電気分野は嫌い)</p>
                     </div>
