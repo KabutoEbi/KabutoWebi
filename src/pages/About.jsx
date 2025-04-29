@@ -13,7 +13,8 @@ const About = () => {
                     <div className="my-4">
                         <p>KabutoEbi</p>
                         <p>プログラミン･ロードバイク･1人旅が趣味</p>
-                        <p>高専3年生 電気情報工学科（電気分野は好きじゃない）</p>
+                        <p>高専3年生</p>
+                        <p>電気情報工学科（電気分野は好きじゃない）</p>
                     </div>
                 </div>
                 <div className="mt-4 text-xl">
