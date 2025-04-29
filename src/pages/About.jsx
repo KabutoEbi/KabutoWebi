@@ -20,7 +20,7 @@ const About = () => {
                 <div className="mt-4 text-xl">
                     <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-600 p-4">経歴</p>
                     <div className="my-4">
-                        <p>2007年9月12日：生誕</p>
+                        <p>2007年9月12日：誕生</p>
                         <p>2014年4月：小学校入学</p>
                         <p>2020年3月：小学校卒業</p>
                         <p>2020年4月：中学校入学</p>
