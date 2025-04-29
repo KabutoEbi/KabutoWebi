@@ -19,6 +19,14 @@ const Products = () => {
             </div>
 
             <Product
+                Name="veryfunny"
+                description="とてもおもしろい"
+            />
+            <div className="mb-4 text-xl">
+                <a href="https://github.com/KabutoEbi/veryfunny" target="_blank" rel="noopener noreferrer">GitHub→</a>
+            </div>
+
+            <Product
                 Name="Body Balancer"
                 description="座布団に座るだけで体の姿勢状況を測定するデバイスです。"
             />
