@@ -15,7 +15,13 @@ const Products = () => {
                 description="あなたが見ているこのサイト。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://github.com/KabutoEbi/KabutoWebi" target="_blank" rel="noopener noreferrer">GitHub→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    GitHub→
+                </a>
             </div>
 
             <Product
@@ -23,7 +29,13 @@ const Products = () => {
                 description="LINEスタンプです。理解するのに時間がかかります。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://store.line.me/stickershop/product/30147548/ja" target="_blank" rel="noopener noreferrer">LINE Store→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    LINE Store→
+                </a>
             </div>
 
             <Product
@@ -31,7 +43,13 @@ const Products = () => {
                 description="自作ゲームです。たくさん石を壊しましょう。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://github.com/KabutoEbi/StackStones" target="_blank" rel="noopener noreferrer">GitHub→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    GitHub→
+                </a>
             </div>
 
             <Product
@@ -39,7 +57,13 @@ const Products = () => {
                 description="とてもおもしろい"
             />
             <div className="mb-4 text-xl">
-                <a href="https://github.com/KabutoEbi/veryfunny" target="_blank" rel="noopener noreferrer">GitHub→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    GitHub→
+                </a>
             </div>
 
             <Product
@@ -47,7 +71,13 @@ const Products = () => {
                 description="座布団に座るだけで体の姿勢状況を測定するデバイスです。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://drive.google.com/file/d/1qRbASGgWBVy6I860xdmvNxihezG-eAx7/view?usp=sharing" target="_blank" rel="noopener noreferrer">資料→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    資料→
+                </a>
             </div>
 
             <Product
@@ -55,7 +85,13 @@ const Products = () => {
                 description="貯金箱とぬりえを組み合わせた目標達成ツールです。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://protopedia.net/prototype/6398" target="_blank" rel="noopener noreferrer">サイト→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    サイト→
+                </a>
             </div>
 
             <Product
@@ -63,9 +99,21 @@ const Products = () => {
                 description="Arduinoで2進数時計を作りました。"
             />
             <div className="mb-2 text-xl">
-                <a href="https://qiita.com/KabutoEbi/items/16753cae7f433e0ec461" target="_blank" rel="noopener noreferrer">Qiita→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    Qiita→
+                </a>
                 <br />
-                <a href="https://github.com/KabutoEbi/BinaryClock" target="_blank" rel="noopener noreferrer">GitHub→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    GitHub→
+                </a>
             </div>
 
             <Product
@@ -73,7 +121,13 @@ const Products = () => {
                 description="簡易的な自動販売機です。"
             />
             <div className="mb-4 text-xl">
-                <a href="https://youtube.com/shorts/h0v0p4pKwqg?feature=share" target="_blank" rel="noopener noreferrer">動画→</a>
+                <a href="https://github.com/KabutoEbi/KabutoWebi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    動画→
+                </a>
             </div>
 
             <Footer />
