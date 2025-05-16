@@ -19,6 +19,14 @@ const Products = () => {
             </div>
 
             <Product
+                Name="遠回しに伝える"
+                description="LINEスタンプです。理解するのに時間がかかります。"
+            />
+            <div className="mb-4 text-xl">
+                <a href="https://store.line.me/stickershop/product/30147548/ja" target="_blank" rel="noopener noreferrer">LINE Store→</a>
+            </div>
+
+            <Product
                 Name="賽の河原の石積み"
                 description="自作ゲームです。たくさん石を壊しましょう。"
             />
