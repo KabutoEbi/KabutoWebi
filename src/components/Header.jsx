@@ -1,6 +1,3 @@
-import React from "react";
-import "../css/Header.css"
-
 const Header = () => {
     return (
         <header className="text-center bg-green-400 margin-y-4 p-4 border-b-6 border-green-600">

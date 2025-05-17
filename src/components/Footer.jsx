@@ -1,6 +1,3 @@
-import React from "react";
-import "../css/Footer.css";
-
 const Footer = () => {
     return (
         <div className="textcenter mt-4 bg-green-400 border-t-6 border-green-600 p-3">

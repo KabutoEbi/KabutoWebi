@@ -1,16 +1,23 @@
 import React from "react";
 
-const Product = ({ Name, description}) => {
-    return (
-        <div>
-            <p className="font-bold text-2xl bg-green-200 border-t-3 border-green-500 p-3 ">
-                {Name}
-            </p>
-            <p className="text-xl p-2">
-                {description}
-            </p>
+const Product = ({ Name, description, links = [] }) => (
+    <div className="bg-green-200 rounded-lg shadow-md p-6 mb-6 w-full md:w-[calc(50%-0.5rem)]">
+        <h2 className="text-2xl font-bold mb-2">{Name}</h2>
+        <p className="mb-4">{description}</p>
+        <div className="flex flex-wrap gap-4 justify-center">
+            {links.map((link, idx) => (
+                <a
+                    key={idx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline text-lg"
+                >
+                    {link.label}
+                </a>
+            ))}
         </div>
-    );
-};
+    </div>
+);
 
 export default Product;
