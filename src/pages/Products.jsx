@@ -55,7 +55,7 @@ const Products = () => {
                     Name="ぷらなび.pig"
                     description="貯金箱とぬりえを組み合わせた目標達成ツールです。"
                     links={[
-                        { label: "サイト→", url: "https://protopedia.net/prototype/6398" },
+                        { label: "コンテストサイト→", url: "https://protopedia.net/prototype/6398" },
                     ]}
                 ></Product>
 
