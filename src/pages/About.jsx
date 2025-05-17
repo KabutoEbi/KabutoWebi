@@ -9,7 +9,7 @@ const About = () => {
             <div className="mt-4 text-xl">
                 <img src="/icon.jpg" alt="KabutoEbi Icon" className="mx-auto my-10 w-50 h-50 rounded-full" />
                 <div className="text-xl">
-                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-600 p-4">自己紹介</p>
+                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-400 p-4">自己紹介</p>
                     <div className="my-4">
                         <p>KabutoEbi</p>
                         <p>プログラミング･ロードバイク･1人旅が趣味</p>
@@ -18,7 +18,7 @@ const About = () => {
                     </div>
                 </div>
                 <div className="mt-4 text-xl">
-                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-600 p-4">経歴</p>
+                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-400 p-4">経歴</p>
                     <div className="my-4">
                         <p>2007年9月12日：誕生</p>
                         <p>2014年4月：小学校入学</p>
@@ -30,12 +30,12 @@ const About = () => {
                     </div>
                 </div>
                 <div className="mt-4 text-xl">
-                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-600 p-4">技術スタック</p>
+                    <p className="font-bold text-2xl bg-green-300 border-t-6 border-green-400 p-4">技術スタック</p>
                     <table className="table-auto mx-auto my-4 border-collapse border border-black">
                         <thead>
                             <tr>
-                                <th className="border border-gray-400 px-4 py-2">技術</th>
-                                <th className="border border-gray-400 px-4 py-2">レベル</th>
+                                <th className="border border-gray-400 px-4 py-2 bg-green-200">技術</th>
+                                <th className="border border-gray-400 px-4 py-2 bg-green-200">レベル</th>
                             </tr>
                         </thead>
                         <tbody>
