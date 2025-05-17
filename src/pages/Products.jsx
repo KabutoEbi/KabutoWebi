@@ -10,7 +10,7 @@ const Products = () => {
                 <p>作った作品とかを紹介します。</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-4 w-full max-w-4xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto px-2">
                 <Product
                     Name="KabutoWebi"
                     description="あなたが見ているこのサイト。"

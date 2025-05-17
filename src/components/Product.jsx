@@ -1,7 +1,7 @@
 import React from "react";
 
 const Product = ({ Name, description, links = [] }) => (
-    <div className="bg-green-200 rounded-lg shadow-md p-6 mb-6 w-full md:w-[calc(50%-0.5rem)]">
+    <div className="bg-green-200 rounded-lg shadow-md p-6 mb-6 w-full md:w-[48%]">
         <h2 className="text-2xl font-bold mb-2">{Name}</h2>
         <p className="mb-4">{description}</p>
         <div className="flex flex-wrap gap-4 justify-center">
