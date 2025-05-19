@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const Products = () => {
     return (
-        <div className="text-center bg-green-100">
+        <div className="text-center">
             <Header />
             <div className="mt-4 my-4 text-xl p-4">
                 <p>作った作品とかを紹介します。</p>

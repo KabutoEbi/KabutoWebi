@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 const Home = () => {
     return (
-        <div className="text-center bg-green-100">
+        <div className="text-center">
             <Header />
             <div className="mt-4 text-xl p-4">
                 <p>KabutoEbiのポートフォリオサイトです。</p>

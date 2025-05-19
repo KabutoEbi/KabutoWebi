@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const About = () => {
     return (
-        <div className="text-center bg-green-100">
+        <div className="text-center">
             <Header />
             <div className="mt-4 text-xl">
                 <img src="/icon.jpg" alt="KabutoEbi Icon" className="mx-auto my-10 w-50 h-50 rounded-full" />
