@@ -79,7 +79,6 @@ const Products = () => {
             <div className="text-xl p-4">
                 <p>私は多数の素晴らしい作品を製作したが、ここに記すには余白が小さすぎる。</p>
             </div>
-
             <Footer />
         </div>
     );
