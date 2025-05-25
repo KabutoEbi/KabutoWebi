@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+    user-select: none;
+}
+
 .nav-item-h {
     position: relative;
 }
