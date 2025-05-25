@@ -14,7 +14,7 @@ const Header = () => {
 
     return (
         <header className="bg-green-400 p-4 border-b-6 border-green-600">
-            <div className="flex items-center justify-between px-0 items-center">
+            <div className="flex items-center justify-between px-3 items-center">
                 <div className="flex items-center ml-0 pl-0">
                     <img
                         src="/header-icon.png"
