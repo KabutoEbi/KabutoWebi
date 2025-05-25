@@ -14,8 +14,16 @@ const Header = () => {
 
     return (
         <header className="bg-green-400 p-4 border-b-6 border-green-600">
-            <div className="flex items-center justify-between px-5">
-                <h1 className="text-4xl font-bold text-left">KabutoWebi</h1>
+            <div className="flex items-center justify-between px-0 items-center">
+                <div className="flex items-center ml-0 pl-0">
+                    <img
+                        src="/header-icon.png"
+                        alt="Header Icon"
+                        className="w-10 object-contain select-none mr-1"
+                        draggable="false"
+                    />
+                    <h1 className="text-4xl font-bold text-left select-none">KabutoWebi</h1>
+                </div>
                 <button
                     className="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer"
                     onClick={() => setMenuOpen(!menuOpen)}
