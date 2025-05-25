@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia("(min-width: 768px)");
+        const handler = () => {
+            if (media.matches) setMenuOpen(false);
+        };
+        media.addEventListener("change", handler);
+        return () => media.removeEventListener("change", handler);
+    }, []);
 
     return (
         <header className="bg-green-400 p-4 border-b-6 border-green-600">
@@ -21,7 +30,7 @@ const Header = () => {
                     className={`
                         flex items-center text-2xl
                         ${menuOpen ? "absolute top-16 right-2 bg-green-200 border-2 border-gray-400 rounded shadow-lg flex-col space-x-0 space-y-2 p-4 z-50" : "hidden"}
-                        md:flex md:static md:bg-transparent md:rounded-none md:shadow-none md:flex-row md:space-x-5 md:space-y-0 md:p-0
+                        md:flex md:static md:bg-transparent md:border-0 md:rounded-none md:shadow-none md:flex-row md:space-x-5 md:space-y-0 md:p-0
                     `}
                 >
                     <li className="nav-item-h w-full flex justify-center">
