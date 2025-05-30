@@ -13,7 +13,7 @@ const Home = () => {
                 <img src="/kabutoebi.png" alt="kabutoebi" className="mx-auto my-10 w-50 rounded-full" />
                 <a href="https://www.nies.go.jp/biodiversity/invasive/DB/detail/70400.html" target="_blank" rel="noopener noreferrer" className="hover:underline">カブトエビについて→</a>
             </div>
-            <div className="flex justify-center gap-20 mt-4">
+            <div className="flex justify-center gap-15 mt-4">
                 <div className="flex flex-col items-center">
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block mb-2">Products</p>
                     <div className="text-xl">

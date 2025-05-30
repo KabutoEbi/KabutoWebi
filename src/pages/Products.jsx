@@ -20,6 +20,14 @@ const Products = () => {
                 ></Product>
 
                 <Product
+                    Name="miniSNS"
+                    description="簡易的なSNSです。某Xを真似してみました。"
+                    links={[
+                        { label: "製作中", url: "" },
+                    ]}
+                ></Product>
+
+                <Product
                     Name="遠回しに伝える"
                     description="LINEスタンプです。理解するのに時間がかかります。"
                     links={[
