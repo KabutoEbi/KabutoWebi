@@ -25,10 +25,15 @@ const Header = () => {
                     <h1 className="text-4xl font-bold text-left select-none">KabutoWebi</h1>
                 </div>
                 <button
-                    className="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer"
+                    className="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer relative overflow-hidden"
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="メニュー"
                 >
+                    {menuOpen && (
+                        <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span className="w-10 h-10 bg-green-200 opacity-60 rounded-full animate-scale-in"></span>
+                        </span>
+                    )}
                     <span className="block w-7 h-1 bg-black mb-1 rounded"></span>
                     <span className="block w-7 h-1 bg-black mb-1 rounded"></span>
                     <span className="block w-7 h-1 bg-black rounded"></span>
