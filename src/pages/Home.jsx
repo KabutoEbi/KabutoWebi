@@ -11,7 +11,6 @@ const Home = () => {
                 <p>KabutoEbiのポートフォリオサイトです。</p>
                 <p>作品とか色々載せていきます。</p>
                 <img src="/kabutoebi.png" alt="kabutoebi" className="mx-auto my-10 w-50 rounded-full" />
-                <a href="https://www.nies.go.jp/biodiversity/invasive/DB/detail/70400.html" target="_blank" rel="noopener noreferrer" className="hover:underline">カブトエビについて→</a>
             </div>
             <div className="flex justify-center gap-15 mt-4">
                 <div className="flex flex-col items-center">
