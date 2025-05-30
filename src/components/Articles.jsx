@@ -17,16 +17,6 @@ const Articles = () => {
                 </li>
                 <li className="p-2">
                     <a
-                        href="https://qiita.com/KabutoEbi/items/ca4d1f4e2b4ab7b3804e"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block border-b border-green-400 pb-1 w-[30ch] text-center"
-                    >
-                        [Windows]Apple Musicの音が勝手に変わるとき
-                    </a>
-                </li>
-                <li className="p-2">
-                    <a
                         href="https://qiita.com/KabutoEbi/items/16753cae7f433e0ec461"
                         target="_blank"
                         rel="noopener noreferrer"

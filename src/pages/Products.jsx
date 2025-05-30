@@ -23,7 +23,11 @@ const Products = () => {
                     Name="miniSNS"
                     description="簡易的なSNSです。某Xを真似してみました。"
                     links={[
-                        { label: "製作中", url: "" },
+                        {
+                            label: (
+                                <span className="text-black no-underline cursor-default">製作中</span>
+                            )
+                        },
                     ]}
                 ></Product>
 
@@ -84,7 +88,7 @@ const Products = () => {
                     ]}
                 ></Product>
             </div>
-            
+
             <div className="text-xl p-4">
                 <p>私は多数の素晴らしい作品を製作したが、ここに記すには余白が小さすぎる。</p>
             </div>
