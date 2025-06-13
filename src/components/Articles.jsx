@@ -7,6 +7,16 @@ const Articles = () => {
             <ul className="mt-4">
                 <li className="p-2">
                     <a
+                        href="https://qiita.com/KabutoEbi/items/5fb2aba39177d603f63a"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block border-b border-green-400 pb-1 w-[30ch] text-center"
+                    >
+                        FlutterとFirebaseの連携時の問題
+                    </a>
+                </li>
+                <li className="p-2">
+                    <a
                         href="https://qiita.com/KabutoEbi/items/6b43bd498f3827ea29ab"
                         target="_blank"
                         rel="noopener noreferrer"
