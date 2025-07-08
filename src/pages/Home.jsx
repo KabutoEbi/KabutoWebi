@@ -15,13 +15,13 @@ const Home = () => {
             <div className="flex justify-center gap-15 mt-4">
                 <div className="flex flex-col items-center">
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block mb-2">Products</p>
-                    <div className="text-xl">
+                    <div>
                         <p><a href="/products" className="hover:underline">過去の製作物→</a></p>
                     </div>
                 </div>
                 <div className="flex flex-col items-center">
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block mb-2">About</p>
-                    <div className="text-xl">
+                    <div>
                         <p><a href="/about" className="hover:underline">詳しい自己紹介→</a></p>
                     </div>
                 </div>

@@ -6,9 +6,9 @@ const About = () => {
     return (
         <div className="text-center">
             <Header />
-            <div className="mt-4 text-xl">
+            <div className="mt-4">
                 <img src="/icon.jpg" alt="KabutoEbi Icon" className="mx-auto my-10 w-50 h-50 rounded-full" />
-                <div className="text-xl">
+                <div>
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block">自己紹介</p>
                     <div className="my-4">
                         <p>KabutoEbi</p>
@@ -17,7 +17,7 @@ const About = () => {
                         <p>電気情報工学科(電気分野は嫌い)</p>
                     </div>
                 </div>
-                <div className="mt-4 text-xl">
+                <div className="mt-4">
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block">経歴</p>
                     <div className="my-4">
                         <p>2007年9月12日：誕生</p>
@@ -29,7 +29,7 @@ const About = () => {
                         <p>2025年現在：舞鶴工業高等専門学校在学中</p>
                     </div>
                 </div>
-                <div className="mt-4 text-xl">
+                <div className="mt-4">
                     <p className="font-bold text-2xl p-1 border-b-4 border-green-300 inline-block">技術スタック</p>
                     <table className="table-auto mx-auto my-4 border-collapse border border-black">
                         <thead>
