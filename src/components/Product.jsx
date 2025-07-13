@@ -1,9 +1,21 @@
 import React from "react";
 
-const Product = ({ Name, description, links = [] }) => {
+const Product = ({ Name, description, language, links = [] }) => {
+    // languageが配列かどうかをチェック
+    const languages = Array.isArray(language) ? language : language ? [language] : [];
+    
     return (
-        <article className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
-            <div className="mb-6">
+        <article className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100 relative">
+            {languages.length > 0 && (
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                    {languages.map((lang, index) => (
+                        <div key={index} className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
+                            {lang}
+                        </div>
+                    ))}
+                </div>
+            )}
+            <div className="mb-6 mt-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors duration-300">
                     {Name}
                 </h2>
