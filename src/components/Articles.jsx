@@ -18,6 +18,11 @@ const Articles = () => {
             category: "Git"
         },
         {
+            title: "[Windows]Apple Musicの音が勝手に変わるとき",
+            url: "https://qiita.com/KabutoEbi/items/ca4d1f4e2b4ab7b3804e",
+            category: "Windows"
+        },
+        {
             title: "Arduinoで2進数時計を作る",
             url: "https://qiita.com/KabutoEbi/items/16753cae7f433e0ec461",
             category: "Arduino"
