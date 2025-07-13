@@ -5,7 +5,7 @@ const Articles = () => {
         {
             title: "レールガンのためのローレンツ力",
             url: "https://qiita.com/KabutoEbi/items/589d67061ed960c8596f",
-            category: "Physics"
+            category: "電磁気学"
         },
         {
             title: "FlutterとFirebaseの連携時の問題",
