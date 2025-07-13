@@ -56,8 +56,7 @@ const Roadbike = () => {
                 <div className="mt-10 text-center">
                     <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-xl inline-block max-w-3xl">
                         <p className="text-gray-700 text-lg italic leading-relaxed">
-                            暇なときにふらっとサイクリングしてます．<br />
-                            そろそろ新しいチャリほしい．
+                            暇なときにふらっとサイクリングしてます．そろそろ新しいチャリほしい．
                         </p>
                     </div>
                 </div>
