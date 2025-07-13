@@ -36,11 +36,12 @@ const Articles = () => {
 
     const getCategoryColor = (category) => {
         const colors = {
-            Physics: "bg-purple-100 text-purple-700",
+            電磁気学: "bg-purple-100 text-purple-700",
             Flutter: "bg-blue-100 text-blue-700",
             Git: "bg-orange-100 text-orange-700",
             Arduino: "bg-green-100 text-green-700",
-            Event: "bg-pink-100 text-pink-700"
+            Event: "bg-pink-100 text-pink-700",
+            Windows: "bg-gray-100 text-gray-700",
         };
         return colors[category] || "bg-gray-100 text-gray-700";
     };
