@@ -33,7 +33,7 @@ const Products = () => {
                         description="舞鶴高専の情報をまとめたWikiサイトです．"
                         language={["React", "Firebase"]}
                         links={[
-                            { label: "サイト", url: "mnct-wiki.vercel.app" },
+                            { label: "サイト", url: "https://mnct-wiki.vercel.app/" },
                         ]}
                     />
 
