@@ -31,16 +31,16 @@ const Products = () => {
                     <Product
                         Name="MNCT Wiki"
                         description="舞鶴高専の情報をまとめたWikiサイトです．"
-                        language={["React", "Node.js", "MongoDB"]}
+                        language={["React", "Firebase"]}
                         links={[
-                            { label: "製作中", isInProgress: true, },
+                            { label: "サイト", url: "mnct-wiki.vercel.app" },
                         ]}
                     />
 
                     <Product
                         Name="miniSNS"
                         description="簡易的なSNSです．某Xを真似してみました．"
-                        language="Flutter"
+                        language={["Flutter", "Firebase"]}
                         links={[
                             { label: "GitHub", url: "https://github.com/KabutoEbi/miniSNS"},
                         ]}
@@ -76,7 +76,7 @@ const Products = () => {
                     <Product
                         Name="Body Balancer"
                         description="座布団に座るだけで体の姿勢状況を測定するデバイスです．"
-                        language={["Python", "Raspberry Pi Pico", "Jetson Nano"]}
+                        language={["Python", "RaspberryPiPico", "JetsonNano"]}
                         links={[
                             { label: "資料", url: "https://drive.google.com/file/d/1qRbASGgWBVy6I860xdmvNxihezG-eAx7/view?usp=sharing" },
                         ]}
