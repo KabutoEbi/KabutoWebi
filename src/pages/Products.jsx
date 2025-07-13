@@ -28,6 +28,14 @@ const Products = () => {
                     />
 
                     <Product
+                        Name="MNCT Wiki"
+                        description="舞鶴高専の情報をまとめたWikiサイトです．"
+                        links={[
+                            { label: "製作中", isInProgress: true, },
+                        ]}
+                    />
+
+                    <Product
                         Name="miniSNS"
                         description="簡易的なSNSです．某Xを真似してみました．"
                         links={[
