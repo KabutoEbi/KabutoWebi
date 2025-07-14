@@ -7,7 +7,10 @@ const TravelDestinations = () => {
         { name: "東京" },
         { name: "石川" },
         { name: "滋賀" },
+        { name: "兵庫" },
         { name: "京都" },
+        { name: "大阪" },
+        { name: "奈良" },
     ];
 
     return (
