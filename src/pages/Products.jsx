@@ -29,6 +29,15 @@ const Products = () => {
                     />
 
                     <Product
+                        Name="calendar_app"
+                        description="個人的に欲しい機能を集めたカレンダーアプリです．"
+                        language="Flutter"
+                        links={[
+                            { label: "GitHub", url: "https://github.com/KabutoEbi/calendar_app" },
+                        ]}
+                    />
+
+                    <Product
                         Name="MNCT Wiki"
                         description="舞鶴高専の情報をまとめたWikiサイトです．"
                         language={["React", "Firebase"]}
