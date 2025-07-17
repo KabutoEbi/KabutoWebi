@@ -1,13 +1,14 @@
 import React from "react";
+import { Laptop, Gamepad2, Smartphone, Globe, Code2 } from "lucide-react";
 
 const TechStack = () => {
     const skills = [
-        { tech: "C++", level: "ある程度", color: "bg-blue-500", icon: "💻" },
-        { tech: "AtCoder", level: "茶", color: "bg-purple-500", icon: "💻" },
-        { tech: "Unity", level: "ある程度", color: "bg-gray-400", icon: "🎮" },
-        { tech: "React", level: "ある程度", color: "bg-cyan-500", icon: "💻" },
-        { tech: "Flutter", level: "勉強中", color: "bg-blue-400", icon: "📱" },
-        { tech: "Japanese", level: "ギリギリ", color: "bg-red-500", icon: "🗾" }
+        { tech: "C++", level: "ある程度", color: "bg-blue-500", icon: <Code2 size={28} /> },
+        { tech: "AtCoder", level: "茶", color: "bg-purple-500", icon: <Laptop size={28} /> },
+        { tech: "Unity", level: "ある程度", color: "bg-gray-400", icon: <Gamepad2 size={28} /> },
+        { tech: "React", level: "ある程度", color: "bg-cyan-500", icon: <Laptop size={28} /> },
+        { tech: "Flutter", level: "勉強中", color: "bg-blue-400", icon: <Smartphone size={28} /> },
+        { tech: "Japanese", level: "ギリギリ", color: "bg-red-500", icon: <Globe size={28} /> }
     ];
 
     return (
