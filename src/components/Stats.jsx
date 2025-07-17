@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Folder, Laptop, Newspaper, Heart } from "lucide-react";
 
 const Stats = () => {
     const [githubStats, setGithubStats] = useState({
@@ -79,8 +80,8 @@ const Stats = () => {
         <div className={`bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-1`}>
             <div className="flex items-center justify-between">
                 <div>
-                    <p className="text-gray-600 text-sm font-medium mb-1">{title}</p>
-                    <p className={`text-3xl font-bold ${color}`}>
+                    <p className="text-black text-sm font-medium mb-1">{title}</p>
+                    <p className="text-3xl font-bold text-black">
                         {loading ? (
                             <span className="animate-pulse bg-gray-200 rounded w-16 h-8 block"></span>
                         ) : (
@@ -88,7 +89,7 @@ const Stats = () => {
                         )}
                     </p>
                 </div>
-                <div className={`w-12 h-12 ${color.replace('text-', 'bg-').replace('-600', '-100')} rounded-full flex items-center justify-center text-2xl`}>
+                <div className="flex items-center justify-center text-2xl">
                     {icon}
                 </div>
             </div>
@@ -99,13 +100,13 @@ const Stats = () => {
         <section className="mb-16 px-4">
             <div className="container mx-auto max-w-4xl">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
                         活動統計
                     </h2>
                 </div>
 
                 <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <h3 className="text-2xl font-bold text-black mb-6 flex items-center">
                         <img src="/github-mark.png" alt="GitHub" className="w-8 h-8 mr-3" />
                         GitHub
                     </h3>
@@ -113,14 +114,14 @@ const Stats = () => {
                         <StatCard
                             title="パブリックリポジトリ"
                             value={githubStats.publicRepos}
-                            icon="📁"
+                            icon={<Folder size={30} />}
                             color="text-blue-600"
                             loading={githubStats.loading}
                         />
                         <StatCard
                             title="今年のコミット数"
                             value={githubStats.totalCommits}
-                            icon="💻"
+                            icon={<Laptop size={30} />}
                             color="text-green-600"
                             loading={githubStats.loading}
                         />
@@ -128,7 +129,7 @@ const Stats = () => {
                 </div>
 
                 <div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <h3 className="text-2xl font-bold text-black mb-6 flex items-center">
                         <img src="/qiita-icon.png" alt="Qiita" className="w-8 h-8 mr-3" />
                         Qiita
                     </h3>
@@ -136,14 +137,14 @@ const Stats = () => {
                         <StatCard
                             title="記事数"
                             value={qiitaStats.itemsCount}
-                            icon="📄"
+                            icon={<Newspaper size={30} />}
                             color="text-green-600"
                             loading={qiitaStats.loading}
                         />
                         <StatCard
                             title="総いいね数"
                             value={qiitaStats.likesCount}
-                            icon="❤️"
+                            icon={<Heart size={30} />}
                             color="text-red-600"
                             loading={qiitaStats.loading}
                         />
