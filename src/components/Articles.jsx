@@ -34,17 +34,7 @@ const Articles = () => {
         }
     ];
 
-    const getCategoryColor = (category) => {
-        const colors = {
-            電磁気学: "bg-purple-200 text-purple-700",
-            Flutter: "bg-blue-200 text-blue-700",
-            Git: "bg-orange-200 text-orange-700",
-            Arduino: "bg-green-200 text-green-700",
-            Event: "bg-pink-200 text-pink-700",
-            Windows: "bg-gray-200 text-gray-700",
-        };
-        return colors[category] || "bg-gray-100 text-gray-700";
-    };
+    const getCategoryColor = () => "bg-green-200 text-green-700";
 
     return (
         <section className="py-16 bg-white">
@@ -61,23 +51,22 @@ const Articles = () => {
                     {articles.map((article, index) => (
                         <article
                             key={index}
-                            className="group bg-white border border-gray-100 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2"
+                            className="group bg-white border border-black rounded-xl p-6"
                         >
                             <div className="flex items-start justify-between mb-4">
                                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
                                     {article.category}
                                 </span>
                                 <svg
-                                    className="w-5 h-5 text-black group-hover:text-gray-500 transition-colors duration-300"
+                                    className="w-5 h-5 text-black transition-colors duration-300"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                             </div>
 
-                            <h3 className="font-semibold text-black mb-4 leading-relaxed transition-colors duration-300 group-hover:text-gray-500">
+                            <h3 className="font-semibold text-black mb-4 leading-relaxed">
                                 {article.title}
                             </h3>
 
@@ -85,7 +74,7 @@ const Articles = () => {
                                 href={article.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center text-black font-medium hover:text-gray-500 transition-colors duration-300"
+                                className="inline-flex items-center text-black font-medium"
                             >
                                 <span>Qiita</span>
                                 <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

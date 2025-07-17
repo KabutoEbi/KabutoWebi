@@ -77,7 +77,7 @@ const Stats = () => {
     }, []);
 
     const StatCard = ({ title, value, icon, color, loading }) => (
-        <div className={`bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-1`}>
+        <div className={`bg-white rounded-2xl p-6 border border-black`}>
             <div className="flex items-center justify-between">
                 <div>
                     <p className="text-black text-sm font-medium mb-1">{title}</p>

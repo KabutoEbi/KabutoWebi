@@ -2,6 +2,7 @@ import React from "react";
 
 const Notifications = () => {
     const notifications = [
+        { date: "2025年07月17日", content: "UIを大幅更新", type: "update" },
         { date: "2025年07月17日", content: "Productsを更新", type: "update" },
         { date: "2025年07月13日", content: "Aboutを更新", type: "update" },
         { date: "2025年07月13日", content: "活動統計を追加", type: "feature" },
@@ -49,8 +50,8 @@ const Notifications = () => {
                 </div>
 
                 <div className="max-w-3xl mx-auto">
-                    <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
-                        <div className="p-6 border-b border-gray-100">
+                    <div className="bg-white rounded-2xl border border-black">
+                        <div className="p-6">
                             <h3 className="text-lg font-semibold text-gray-800 flex items-center">
                                 <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM9 3h6l5 5v11a2 2 0 01-2 2H9a2 2 0 01-2-2V5a2 2 0 012-2z" />
@@ -60,13 +61,13 @@ const Notifications = () => {
                         </div>
 
                         <div className="max-h-96 overflow-y-auto">
-                            <div className="divide-y divide-gray-100">
+                            <div className="divide-y divide-gray-400">
                                 {notifications.map((notification, index) => {
                                     const typeInfo = getTypeInfo(notification.type);
                                     return (
                                         <div
                                             key={index}
-                                            className="p-6 hover:bg-gray-50 transition-colors duration-200"
+                                            className="p-6"
                                         >
                                             <div className="flex items-start space-x-4">
                                                 <div className={`flex-shrink-0 w-10 h-10 rounded-lg ${typeInfo.color} flex items-center justify-center border`}>

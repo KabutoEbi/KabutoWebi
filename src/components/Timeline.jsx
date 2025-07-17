@@ -12,21 +12,21 @@ const Timeline = () => {
 
     return (
         <div className="max-w-4xl mx-auto mb-16">
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 bg-opacity-90">
+            <div className="bg-white rounded-2xl p-8 md:p-12 bg-opacity-90">
                 <div className="flex items-center justify-center mb-8">
-                    <div className="w-16 h-1 bg-blue-300 rounded-full"></div>
-                    <h2 className="text-3xl font-bold text-gray-800 mx-6">経歴</h2>
-                    <div className="w-16 h-1 bg-purple-300 rounded-full"></div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                        Time Line
+                    </h2>
                 </div>
                 <div className="space-y-6 max-w-xl mx-auto">
                     {timeline.map((item, index) => (
-                        <div key={index} className="flex items-center space-x-6 hover:transform hover:translate-x-2 transition-transform duration-300">
-                            <div className="flex-shrink-0 w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
-                                {item.icon && <item.icon size={32} color="#fff" />}
+                        <div key={index} className="flex items-center space-x-6">
+                            <div className="flex-shrink-0 w-16 h-16 bg-green-300 rounded-full flex items-center justify-center text-black text-xl">
+                                {item.icon && <item.icon size={32} />}
                             </div>
-                            <div className="flex-grow bg-gray-50 p-4 rounded-lg border-l-4 border-blue-400">
-                                <div className="font-bold text-gray-800">{item.year}</div>
-                                <div className="text-gray-600">{item.event}</div>
+                            <div className="flex-grow bg-gray-50 p-4 rounded-lg border-l-4 border-green-300">
+                                <div className="font-bold text-black">{item.year}</div>
+                                <div className="text-black">{item.event}</div>
                             </div>
                         </div>
                     ))}
