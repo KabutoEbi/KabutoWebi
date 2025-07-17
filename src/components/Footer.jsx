@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="w-full h-1 bg-green-600" />
             <footer className="bg-green-500">
                 <div className="container mx-auto px-4 py-8">
-                    <div className="flex flex-wrap justify-center items-center gap-6 mb-6">
+                    <div className="flex flex-wrap justify-center items-center gap-3 mb-6">
                         {socialLinks.map((link, index) => (
                             <a
                                 key={index}
