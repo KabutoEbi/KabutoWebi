@@ -36,12 +36,12 @@ const Articles = () => {
 
     const getCategoryColor = (category) => {
         const colors = {
-            電磁気学: "bg-purple-50 text-purple-400",
-            Flutter: "bg-blue-50 text-blue-400",
-            Git: "bg-orange-50 text-orange-400",
-            Arduino: "bg-green-50 text-green-400",
-            Event: "bg-pink-50 text-pink-400",
-            Windows: "bg-gray-50 text-gray-400",
+            電磁気学: "bg-purple-200 text-purple-700",
+            Flutter: "bg-blue-200 text-blue-700",
+            Git: "bg-orange-200 text-orange-700",
+            Arduino: "bg-green-200 text-green-700",
+            Event: "bg-pink-200 text-pink-700",
+            Windows: "bg-gray-200 text-gray-700",
         };
         return colors[category] || "bg-gray-100 text-gray-700";
     };
@@ -51,11 +51,11 @@ const Articles = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-1 bg-blue-100 rounded-full"></div>
-                        <h2 className="text-3xl font-bold text-gray-500 mx-6">Articles</h2>
-                        <div className="w-16 h-1 bg-purple-100 rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-400 rounded-full"></div>
+                        <h2 className="text-3xl font-bold text-black mx-6">Articles</h2>
+                        <div className="w-16 h-1 bg-purple-400 rounded-full"></div>
                     </div>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-black text-lg max-w-2xl mx-auto">
                         技術的な発見や学習内容をQiitaで共有しています
                     </p>
                 </div>
@@ -71,7 +71,7 @@ const Articles = () => {
                                     {article.category}
                                 </span>
                                 <svg 
-                                    className="w-5 h-5 text-gray-200 group-hover:text-green-400 transition-colors duration-300" 
+                                    className="w-5 h-5 text-black group-hover:text-gray-500 transition-colors duration-300" 
                                     fill="none" 
                                     stroke="currentColor" 
                                     viewBox="0 0 24 24"
@@ -80,7 +80,7 @@ const Articles = () => {
                                 </svg>
                             </div>
                             
-                            <h3 className="font-semibold text-gray-400 mb-4 leading-relaxed group-hover:text-green-300 transition-colors duration-300">
+                            <h3 className="font-semibold text-black mb-4 leading-relaxed transition-colors duration-300 group-hover:text-gray-500">
                                 {article.title}
                             </h3>
                             
@@ -88,7 +88,7 @@ const Articles = () => {
                                 href={article.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center text-green-300 font-medium hover:text-green-400 transition-colors duration-300"
+                                className="inline-flex items-center text-black font-medium hover:text-gray-500 transition-colors duration-300"
                             >
                                 <span>Qiita</span>
                                 <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const Articles = () => {
                         href="https://qiita.com/KabutoEbi"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center bg-green-100 text-green-400 px-8 py-3 rounded-full font-medium hover:bg-green-200 hover:text-green-500 transition-all duration-300 shadow hover:shadow-md"
+                        className="inline-flex items-center bg-green-300 text-black px-8 py-3 rounded-full font-medium hover:bg-green-200 transition-all duration-300 shadow hover:shadow-md"
                     >
                         <span>すべての記事を見る</span>
                         <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
