@@ -39,7 +39,7 @@ const Notifications = () => {
     };
 
     return (
-        <section className="py-16 bg-white">
+        <section className="py-24 bg-white">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center mb-6">

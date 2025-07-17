@@ -17,16 +17,16 @@ const About = () => {
                         <img
                             src="/icon.jpg"
                             alt="KabutoEbi Icon"
-                            className="w-40 h-40 md:w-48 md:h-48 rounded-full shadow-2xl border-4 border-white mx-auto transform hover:scale-105 transition-transform duration-300"
+                            className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white mx-auto transform hover:scale-105 transition-transform duration-300"
                         />
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
                         KabutoEbi
                     </h1>
                     <div className="flex flex-wrap justify-center gap-4 text-black">
-                        <span className="bg-green-200 px-4 py-2 rounded-full shadow-md flex items-center gap-2"><Laptop size={18} />プログラミング</span>
-                        <span className="bg-green-200 px-4 py-2 rounded-full shadow-md flex items-center gap-2"><Bike size={18} />ロードバイク</span>
-                        <span className="bg-green-200 px-4 py-2 rounded-full shadow-md flex items-center gap-2"><Backpack size={18} />1人旅</span>
+                        <span className="bg-green-200 px-4 py-2 rounded-full flex items-center gap-2"><Laptop size={18} />プログラミング</span>
+                        <span className="bg-green-200 px-4 py-2 rounded-full flex items-center gap-2"><Bike size={18} />ロードバイク</span>
+                        <span className="bg-green-200 px-4 py-2 rounded-full flex items-center gap-2"><Backpack size={18} />1人旅</span>
                     </div>
                 </div>
 

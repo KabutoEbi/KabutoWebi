@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Articles from "../components/Articles";
 import Notifications from "../components/Notifications";
-import Stats from "../components/Stats";
 import Footer from "../components/Footer";
 import { Wrench, UserRound } from "lucide-react";
 
@@ -68,7 +67,6 @@ const Home = () => {
                 </div>
             </div>
 
-            <Stats />
             <Articles />
             <Notifications />
             <Footer />
