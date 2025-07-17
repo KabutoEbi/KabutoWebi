@@ -1,13 +1,13 @@
 import React from "react";
-import { timelineIcons } from "./LucideTimelineIcons";
+import { Cake, School, BookOpen, GraduationCap, Laptop2 } from "lucide-react";
 
 const Timeline = () => {
     const timeline = [
-        { year: "2007", event: "誕生" },
-        { year: "2014", event: "小学校入学" },
-        { year: "2020", event: "中学校入学" },
-        { year: "2023", event: "舞鶴工業高等専門学校入学" },
-        { year: "2025", event: "在学中" }
+        { year: "2007", event: "誕生", icon: Cake },
+        { year: "2014", event: "小学校入学", icon: School },
+        { year: "2020", event: "中学校入学", icon: BookOpen },
+        { year: "2023", event: "舞鶴工業高等専門学校入学", icon: GraduationCap },
+        { year: "2025", event: "在学中", icon: Laptop2 }
     ];
 
     return (
@@ -22,10 +22,7 @@ const Timeline = () => {
                     {timeline.map((item, index) => (
                         <div key={index} className="flex items-center space-x-6 hover:transform hover:translate-x-2 transition-transform duration-300">
                             <div className="flex-shrink-0 w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
-                                {(() => {
-                                    const LucideIcon = timelineIcons[item.event];
-                                    return LucideIcon ? <LucideIcon size={32} color="#fff" /> : null;
-                                })()}
+                                {item.icon && <item.icon size={32} color="#fff" />}
                             </div>
                             <div className="flex-grow bg-gray-50 p-4 rounded-lg border-l-4 border-blue-400">
                                 <div className="font-bold text-gray-800">{item.year}</div>
