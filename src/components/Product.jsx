@@ -7,7 +7,7 @@ const Product = ({ Name, description, language, links = [] }) => {
     return (
         <article className="group bg-white rounded-2xl p-8 border border-black relative">
             {languages.length > 0 && (
-                <div className="absolute top-4 left-4 flex flex-wrap gap-2 md:static md:top-auto md:left-auto md:mb-0 mb-2">
+                <div className="md:absolute md:top-4 md:left-4 flex flex-wrap gap-2 static mb-2 md:mb-0">
                     {languages.map((lang, index) => (
                         <div key={index} className="bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm font-medium border border-green-200">
                             {lang}
