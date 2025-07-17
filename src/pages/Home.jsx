@@ -3,6 +3,7 @@ import Articles from "../components/Articles";
 import Notifications from "../components/Notifications";
 import Stats from "../components/Stats";
 import Footer from "../components/Footer";
+import { Wrench, UserRound } from "lucide-react";
 
 const Home = () => {
     return (
@@ -26,10 +27,10 @@ const Home = () => {
                     <div className="group bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
                         <div className="text-center">
                             <div className="w-20 h-20 bg-green-300 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                ⚒️
+                                <Wrench size={40} className="invert" />
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-800 mb-4">Products</h2>
-                            <p className="text-gray-600 mb-6 leading-relaxed">
+                            <h2 className="text-2xl font-bold text-black mb-4">Products</h2>
+                            <p className="text-black mb-6 leading-relaxed">
                                 これまでに制作した作品
                             </p>
                             <a 
@@ -47,10 +48,10 @@ const Home = () => {
                     <div className="group bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
                         <div className="text-center">
                             <div className="w-20 h-20 bg-blue-300 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                👨‍💻
+                                <UserRound size={40} className="invert" />
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-800 mb-4">About</h2>
-                            <p className="text-gray-600 mb-6 leading-relaxed">
+                            <h2 className="text-2xl font-bold text-black mb-4">About</h2>
+                            <p className="text-black mb-6 leading-relaxed">
                                 自己紹介
                             </p>
                             <a 
