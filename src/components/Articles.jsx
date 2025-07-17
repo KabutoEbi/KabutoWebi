@@ -51,18 +51,15 @@ const Articles = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-1 bg-blue-400 rounded-full"></div>
-                        <h2 className="text-3xl font-bold text-black mx-6">Articles</h2>
-                        <div className="w-16 h-1 bg-purple-400 rounded-full"></div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                            Articles
+                        </h2>
                     </div>
-                    <p className="text-black text-lg max-w-2xl mx-auto">
-                        技術的な発見や学習内容をQiitaで共有しています
-                    </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {articles.map((article, index) => (
-                        <article 
+                        <article
                             key={index}
                             className="group bg-white border border-gray-100 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2"
                         >
@@ -70,20 +67,20 @@ const Articles = () => {
                                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
                                     {article.category}
                                 </span>
-                                <svg 
-                                    className="w-5 h-5 text-black group-hover:text-gray-500 transition-colors duration-300" 
-                                    fill="none" 
-                                    stroke="currentColor" 
+                                <svg
+                                    className="w-5 h-5 text-black group-hover:text-gray-500 transition-colors duration-300"
+                                    fill="none"
+                                    stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                             </div>
-                            
+
                             <h3 className="font-semibold text-black mb-4 leading-relaxed transition-colors duration-300 group-hover:text-gray-500">
                                 {article.title}
                             </h3>
-                            
+
                             <a
                                 href={article.url}
                                 target="_blank"

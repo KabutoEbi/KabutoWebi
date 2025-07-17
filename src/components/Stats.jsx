@@ -101,7 +101,7 @@ const Stats = () => {
             <div className="container mx-auto max-w-4xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                        活動統計
+                        Activity Statistics
                     </h2>
                 </div>
 
