@@ -14,19 +14,19 @@ const TechStack = () => {
         <div className="max-w-4xl mx-auto mb-16">
             <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 bg-opacity-90">
                 <div className="flex items-center justify-center mb-8">
-                    <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                    <div className="w-16 h-1 bg-blue-300 rounded-full"></div>
                     <h2 className="text-3xl font-bold text-gray-800 mx-6">技術スタック</h2>
-                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    <div className="w-16 h-1 bg-purple-300 rounded-full"></div>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {skills.map((skill, index) => (
-                        <div key={index} className="group bg-gradient-to-br from-white to-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
+                        <div key={index} className="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
                             <div className={`w-12 h-12 ${skill.color} rounded-lg flex items-center justify-center text-white text-xl mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
                                 {skill.icon}
                             </div>
                             <h3 className="font-bold text-gray-800 text-center mb-2">{skill.tech}</h3>
                             <div className="text-center">
-                                <span className="bg-gradient-to-r from-green-100 to-blue-100 px-3 py-1 rounded-full text-sm text-gray-700">
+                                <span className="bg-blue-50 px-3 py-1 rounded-full text-sm text-gray-700">
                                     {skill.level}
                                 </span>
                             </div>

@@ -38,13 +38,13 @@ const Notifications = () => {
     };
 
     return (
-        <section className="py-16 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+        <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-300 rounded-full"></div>
                         <h2 className="text-3xl font-bold text-gray-800 mx-6">Notifications</h2>
-                        <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                        <div className="w-16 h-1 bg-purple-300 rounded-full"></div>
                     </div>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                         サイトの更新情報やお知らせをお伝えします

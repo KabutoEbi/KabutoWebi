@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+        <div className="min-h-screen bg-white">
             <Header />
             <div className="container mx-auto px-4 py-16">
                 <div className="text-center mb-16">
@@ -25,7 +25,7 @@ const Home = () => {
                 <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mb-16">
                     <div className="group bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
                         <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <div className="w-20 h-20 bg-green-300 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                 ⚒️
                             </div>
                             <h2 className="text-2xl font-bold text-gray-800 mb-4">Products</h2>
@@ -34,7 +34,7 @@ const Home = () => {
                             </p>
                             <a 
                                 href="/products" 
-                                className="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-full font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-105"
+                                className="inline-flex items-center justify-center bg-green-300 text-black px-8 py-3 rounded-full font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-105"
                             >
                                 <span>作品を見る</span>
                                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@ const Home = () => {
 
                     <div className="group bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-100">
                         <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <div className="w-20 h-20 bg-blue-300 rounded-2xl flex items-center justify-center text-white text-3xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                 👨‍💻
                             </div>
                             <h2 className="text-2xl font-bold text-gray-800 mb-4">About</h2>
@@ -55,7 +55,7 @@ const Home = () => {
                             </p>
                             <a 
                                 href="/about" 
-                                className="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-full font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-105"
+                                className="inline-flex items-center justify-center bg-blue-300 text-black px-8 py-3 rounded-full font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:scale-105"
                             >
                                 <span>詳しく見る</span>
                                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

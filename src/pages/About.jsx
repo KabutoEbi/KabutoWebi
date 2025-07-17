@@ -8,7 +8,7 @@ import Timeline from "../components/Timeline";
 
 const About = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+        <div className="min-h-screen bg-white">
             <Header />
             <div className="container mx-auto px-4 py-12">
                 <div className="text-center mb-16">
@@ -32,16 +32,16 @@ const About = () => {
                 <div className="max-w-4xl mx-auto mb-16">
                     <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 bg-opacity-90">
                         <div className="flex items-center justify-center mb-8">
-                            <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                            <div className="w-16 h-1 bg-blue-300 rounded-full"></div>
                             <h2 className="text-3xl font-bold text-gray-800 mx-6">自己紹介</h2>
-                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                            <div className="w-16 h-1 bg-purple-300 rounded-full"></div>
                         </div>
                         <div className="text-center">
                             <div className="space-y-4 max-w-md mx-auto">
-                                <div className="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-lg">
+                                <div className="bg-blue-50 p-4 rounded-lg">
                                     <p className="text-lg text-gray-700">高専3年生</p>
                                 </div>
-                                <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg">
+                                <div className="bg-purple-50 p-4 rounded-lg">
                                     <p className="text-lg text-gray-700">電気情報工学科</p>
                                     <p className="text-sm text-gray-500">(電気分野は嫌い)</p>
                                 </div>

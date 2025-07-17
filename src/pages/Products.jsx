@@ -4,14 +4,14 @@ import Footer from "../components/Footer";
 
 const Products = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+        <div className="min-h-screen bg-white">
             <Header />
             <div className="container mx-auto px-4 py-16">
                 <div className="text-center mb-16">
                     <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-300 rounded-full"></div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mx-6">Products</h1>
-                        <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                        <div className="w-16 h-1 bg-purple-300 rounded-full"></div>
                     </div>
                     <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         これまでに制作したアプリケーション、デバイス、ゲームなどの作品をご紹介します

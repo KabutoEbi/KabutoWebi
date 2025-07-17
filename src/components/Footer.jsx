@@ -7,7 +7,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-gradient-to-r from-green-500 to-green-600 mt-16">
+        <footer className="bg-green-500 mt-16">
             <div className="container mx-auto px-4 py-8">
                 <div className="flex flex-wrap justify-center items-center gap-6 mb-6">
                     {socialLinks.map((link, index) => (
