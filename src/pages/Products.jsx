@@ -27,6 +27,16 @@ const Products = () => {
                     />
 
                     <Product
+                        Name="diary-app"
+                        description="1日に一言だけ日記をつけるサイトです．"
+                        language={["React", "Firebase"]}
+                        links={[
+                            { label: "サイト", url: "https://diary-app-virid.vercel.app/" },
+                            { label: "GitHub", url: "https://github.com/KabutoEbi/diary-app" },
+                        ]}
+                    />
+
+                    <Product
                         Name="calendar_app"
                         description="個人的に欲しい機能を集めたカレンダーアプリです．"
                         language="Flutter"
