@@ -1,7 +1,6 @@
 import React from "react";
 
 const Product = ({ Name, description, language, links = [] }) => {
-    // languageが配列かどうかをチェック
     const languages = Array.isArray(language) ? language : language ? [language] : [];
     
     return (

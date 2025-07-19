@@ -74,7 +74,6 @@ const Articles = () => {
                                 href={article.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center text-black font-medium"
                             >
                                 <span>Qiita</span>
                                 <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
