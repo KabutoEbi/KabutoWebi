@@ -2,6 +2,7 @@ import React from "react";
 
 const Notifications = () => {
     const notifications = [
+        { date: "2025年07月21日", content: "Articlesを更新", type: "feature" },
         { date: "2025年07月19日", content: "Productsを更新", type: "feature" },
         { date: "2025年07月17日", content: "UIを大幅更新", type: "update" },
         { date: "2025年07月17日", content: "Productsを更新", type: "feature" },

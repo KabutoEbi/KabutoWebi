@@ -3,6 +3,11 @@ import React from "react";
 const Articles = () => {
     const articles = [
         {
+            title: "天動説をグラフにする",
+            url: "https://qiita.com/KabutoEbi/items/feb1e6f2bc097e6cfa04",
+            category: "数学"
+        },
+        {
             title: "レールガンのためのローレンツ力",
             url: "https://qiita.com/KabutoEbi/items/589d67061ed960c8596f",
             category: "電磁気学"
