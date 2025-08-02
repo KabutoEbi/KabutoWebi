@@ -27,6 +27,15 @@ const Products = () => {
                     />
 
                     <Product
+                        Name="console-solitaire"
+                        description="コンソールで遊べるソリティアです．"
+                        language="Python"
+                        links={[
+                            { label: "GitHub", url: "https://github.com/KabutoEbi/console-solitaire" },
+                        ]}
+                    />
+
+                    <Product
                         Name="diary-app"
                         description="1日に一言だけ日記をつけるサイトです．"
                         language={["React", "Firebase"]}
@@ -59,7 +68,7 @@ const Products = () => {
                         description="簡易的なSNSです．某Xを真似してみました．"
                         language={["Flutter", "Firebase"]}
                         links={[
-                            { label: "GitHub", url: "https://github.com/KabutoEbi/miniSNS"},
+                            { label: "GitHub", url: "https://github.com/KabutoEbi/miniSNS" },
                         ]}
                     />
 
@@ -134,7 +143,7 @@ const Products = () => {
                     </p>
                 </div>
             </div>
-            
+
             <Footer />
         </div>
     );
