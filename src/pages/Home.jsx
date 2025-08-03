@@ -3,6 +3,7 @@ import Articles from "../components/Articles";
 import Notifications from "../components/Notifications";
 import Footer from "../components/Footer";
 import { Wrench, UserRound } from "lucide-react";
+import Clothes from "../components/Clothes";
 
 const Home = () => {
     return (
@@ -68,6 +69,7 @@ const Home = () => {
             </div>
 
             <Articles />
+            <Clothes />
             <Notifications />
             <Footer />
         </div>
