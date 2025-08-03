@@ -79,9 +79,10 @@ const Articles = () => {
                                 href={article.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className="inline-flex items-center relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-0.5 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
                             >
                                 <span>Qiita</span>
-                                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
