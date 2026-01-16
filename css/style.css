@@ -273,8 +273,8 @@ body {
     color: #800000;
 }
 
-/* Clothe */
-.clothe {
+/* Clothes */
+.clothes {
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -284,7 +284,7 @@ body {
     min-height: calc(100vh - 80px);
 }
 
-.clothe p {
+.clothes p {
     margin-bottom: 10px;
     font-size: 1.1em;
     padding: 10px;
@@ -511,11 +511,11 @@ body {
         font-size: 0.9em;
     }
 
-    .clothe {
+    .clothes {
         padding: 15px;
     }
 
-    .clothe iframe {
+    .clothes iframe {
         width: 100%;
         max-width: 375px;
     }
