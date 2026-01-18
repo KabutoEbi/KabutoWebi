@@ -52,9 +52,43 @@
                 <p class="error-description">
                     お探しのページは存在しないか、移動または削除された可能性があります。
                 </p>
+                <img src="images/icon.png" alt="icon" class="icon-image" id="iconImage">
+                <p class="click-text">↑クリック↑</p>
                 <a href="https://kabutoebi.github.io/KabutoWebi/" class="home-button">ホームに戻る</a>
             </div>
         </div>
+        <div id="heartsContainer"></div>
+        <script>
+            document.getElementById('iconImage').addEventListener('click', function(e) {
+                const heartsContainer = document.getElementById('heartsContainer');
+                const rect = this.getBoundingClientRect();
+                
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+                
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('img');
+                        heart.src = 'images/heart.png';
+                        heart.className = 'heart';
+                        
+                        const randomX = rect.left + rect.width / 2 + (Math.random() - 0.5) * 50;
+                        const randomY = rect.top + rect.height / 2;
+                        
+                        heart.style.left = randomX + 'px';
+                        heart.style.top = randomY + 'px';
+                        
+                        heartsContainer.appendChild(heart);
+                        
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 3000);
+                    }, i * 100);
+                }
+            });
+        </script>
         <footer class="footer">
             <p>&copy; 2026 KabutoEbi. All rights reserved.</p>
         </footer>
