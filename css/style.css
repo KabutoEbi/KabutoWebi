@@ -204,6 +204,15 @@ body {
     border: 2px inset #808080;
 }
 
+.contact li a.reverse-arrow::after {
+    content: ' →';
+    transform-origin: right;
+}
+
+.contact li a.reverse-arrow:hover::after {
+    transform: scaleX(8);
+}
+
 /* Product */
 .product-container {
     padding: 30px;
