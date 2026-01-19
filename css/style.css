@@ -756,3 +756,13 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+.stackstones-note {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ffffe0;
+    border: 2px solid #ffd700;
+    color: #000080;
+    font-weight: bold;
+}
