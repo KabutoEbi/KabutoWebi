@@ -117,6 +117,47 @@ body {
     box-shadow: 3px 3px 0px #999999;
 }
 
+.product-link-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 3px ridge #808080;
+    box-shadow: 3px 3px 0px #999999;
+    text-align: center;
+}
+
+.product-link-section h2 {
+    color: #000080;
+    background-color: #c0c0c0;
+    padding: 8px;
+    border: 2px outset #e0e0e0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.product-link-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #c0c0c0;
+    border: 3px outset #e0e0e0;
+    color: #000080;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: all 0.2s;
+}
+
+.product-link-button:hover {
+    background-color: #ffff00;
+    border: 3px inset #e0e0e0;
+    transform: scale(1.05);
+}
+
+.product-link-button:active {
+    border: 3px inset #808080;
+    transform: scale(0.98);
+}
+
 .contact-section {
     margin-top: 30px;
     padding: 20px;
