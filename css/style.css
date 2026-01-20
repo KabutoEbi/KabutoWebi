@@ -334,10 +334,9 @@ body {
     min-height: calc(100vh - 80px);
 }
 
-.clothes p {
+.clothes iframe {
+    margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 1.1em;
-    padding: 10px;
 }
 
 /* About */
