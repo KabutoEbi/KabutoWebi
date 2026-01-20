@@ -117,65 +117,6 @@ body {
     box-shadow: 3px 3px 0px #999999;
 }
 
-.fish {
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.fish-code-box {
-    background-color: #000;
-    color: #00ff00;
-    padding: 15px;
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
-    border: 2px solid #00ff00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-    margin-top: 30px;
-}
-
-.fish-code-box p {
-    margin: 10px 0;
-}
-
-.fish-code-box code {
-    color: #00ff00;
-}
-
-.fish-run-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #c0c0c0;
-    color: #000000;
-    border: 2px outset #ffffff;
-    border-radius: 0;
-    font-weight: bold;
-    font-family: "MS UI Gothic", "Meiryo UI", Arial, sans-serif;
-    box-shadow: 2px 2px 0px #808080;
-}
-
-.fish-run-button:hover {
-    background-color: #d0d0d0;
-}
-
-.fish-run-button:active {
-    border-style: inset;
-    box-shadow: inset 1px 1px 2px #808080;
-}
-
-.fish-output {
-    margin-top: 10px;
-    padding: 15px;
-    background-color: #000;
-    color: #00ff00;
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
-    border: 2px solid #00ff00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-    min-height: 30px;
-    display: none;
-}
-
 .product-link-section {
     margin-top: 30px;
     padding: 20px;
