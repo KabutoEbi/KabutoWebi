@@ -71,11 +71,29 @@
                     <li><a href="https://x.com/KabutoEbi_mp3" target="_blank" rel="noopener noreferrer">X</a></li>
                 </ul>
             </div>
+
+            <div class="fish">
+                <div class="fish-code-box">
+                    <p><code>98*oaa*1+o9c*o9c*oba*\</code></p>
+                    <p><code>1+ob4*o84*of2+7*oba*1\</code></p>
+                    <p><code>+of4+6*oc9*oaa*ob3*o;\</code></p>
+                </div>
+                <button onclick="runFishCode()" class="fish-run-button">RUN</button>
+                <div id="fish-output" class="fish-output"></div>
+            </div>
         </div>
         <footer class="footer">
             <p>&copy; 2026 KabutoEbi. All rights reserved.</p>
         </footer>
     </div>
+    <!-- scriptタグ使いたくね～ -->
+    <script>
+        function runFishCode() {
+            const outputDiv = document.getElementById('fish-output');
+            outputDiv.style.display = 'block';
+            outputDiv.textContent = 'Hello, world!';
+        }
+    </script>
 </body>
 
 </html>
