@@ -12,7 +12,7 @@ export const adminPage = `<main class="admin-page">
         <div class="admin-toolbar" aria-label="プロダクト管理操作">
             <button type="button" id="admin-add">プロダクトを追加</button>
         </div>
-        <p class="admin-order-help">編集内容は各プロダクトの「更新」で反映されます。上へ・下へボタンでの並べ替えは自動で保存されます。</p>
+        <p class="admin-order-help">編集内容は各プロダクトの「更新」で反映されます。縦3点をドラッグして並べ替えると自動で保存されます。</p>
         <div id="admin-product-list" class="admin-product-list"></div>
     </section>
 </main>`;

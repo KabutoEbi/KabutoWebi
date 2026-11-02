@@ -21,6 +21,13 @@ import { compareProducts, emptyProduct, normalizeProduct, validateProduct, type 
 let products: EditableProduct[] = [];
 let productCards = new Map<EditableProduct, HTMLDetailsElement>();
 let busy = false;
+let draggedProduct: EditableProduct | null = null;
+let dropTarget: HTMLElement | null = null;
+
+function clearDropTarget(): void {
+    dropTarget?.classList.remove("border-t-4", "border-b-4", "border-emerald-500");
+    dropTarget = null;
+}
 
 function element(id: string): HTMLElement {
     const found = document.getElementById(id);
@@ -38,7 +45,7 @@ function setStatus(message: string, isError = false): void {
 function setBusy(value: boolean): void {
     busy = value;
     for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button, #admin-logout")) {
-        button.disabled = busy || button.dataset.boundary === "true";
+        button.disabled = busy;
     }
 }
 
@@ -145,10 +152,9 @@ async function removeProduct(product: EditableProduct): Promise<void> {
     }
 }
 
-async function moveProduct(product: EditableProduct, direction: -1 | 1): Promise<void> {
+async function moveProduct(product: EditableProduct, destination: number, focusHandle = false): Promise<void> {
     const index = products.indexOf(product);
-    const destination = index + direction;
-    if (busy || index < 0 || destination < 0 || destination >= products.length) return;
+    if (busy || index < 0 || destination < 0 || destination >= products.length || destination === index) return;
 
     const original = [...products];
     products.splice(index, 1);
@@ -170,12 +176,13 @@ async function moveProduct(product: EditableProduct, direction: -1 | 1): Promise
         setStatus("並び順を保存できませんでした。Firestoreの権限と接続を確認してください。", true);
     } finally {
         setBusy(false);
-        productCards.get(product)?.querySelector("summary")?.focus();
+        if (focusHandle) productCards.get(product)?.parentElement?.querySelector<HTMLButtonElement>(".admin-drag-handle")?.focus();
     }
 }
 
 function renderProducts(expand?: EditableProduct): void {
     const container = element("admin-product-list");
+    clearDropTarget();
     const openProducts = new Set([...productCards].filter(([, card]) => card.open).map(([product]) => product));
     const nextCards = new Map<EditableProduct, HTMLDetailsElement>();
     const cards = document.createDocumentFragment();
@@ -269,22 +276,65 @@ function renderProducts(expand?: EditableProduct): void {
         actions.appendChild(remove);
         fields.appendChild(actions);
         card.append(summary, fields);
-        const controls = document.createElement("div");
-        controls.className = "admin-reorder-controls";
-        for (const [label, direction, boundary] of [
-            ["上へ", -1, index === 0],
-            ["下へ", 1, index === products.length - 1],
-        ] as const) {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.className = "admin-reorder-button";
-            button.textContent = label;
-            button.setAttribute("aria-label", `「${product.title.trim() || "新しいプロダクト"}」を${label}移動`);
-            if (boundary) button.dataset.boundary = "true";
-            button.addEventListener("click", () => { void moveProduct(product, direction); });
-            controls.appendChild(button);
+        const handle = document.createElement("button");
+        handle.type = "button";
+        handle.className = "admin-drag-handle";
+        handle.draggable = true;
+        handle.setAttribute("aria-label", `「${product.title.trim() || "新しいプロダクト"}」をドラッグして並べ替え`);
+        handle.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown");
+        handle.title = "ドラッグして並べ替え（上下キーでも移動）";
+        for (let dot = 0; dot < 3; dot += 1) {
+            const marker = document.createElement("span");
+            marker.className = "admin-drag-dot";
+            marker.setAttribute("aria-hidden", "true");
+            handle.appendChild(marker);
         }
-        entry.append(card, controls);
+        handle.addEventListener("dragstart", (event) => {
+            if (busy || !event.dataTransfer) {
+                event.preventDefault();
+                return;
+            }
+            draggedProduct = product;
+            event.dataTransfer.effectAllowed = "move";
+            event.dataTransfer.setData("text/plain", product.id ?? "new-product");
+            entry.classList.add("opacity-50");
+        });
+        handle.addEventListener("dragend", () => {
+            draggedProduct = null;
+            clearDropTarget();
+            entry.classList.remove("opacity-50");
+        });
+        handle.addEventListener("keydown", (event) => {
+            if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+            event.preventDefault();
+            void moveProduct(product, products.indexOf(product) + (event.key === "ArrowUp" ? -1 : 1), true);
+        });
+        entry.addEventListener("dragover", (event) => {
+            if (busy || !draggedProduct || draggedProduct === product) return;
+            event.preventDefault();
+            if (event.dataTransfer) event.dataTransfer.dropEffect = "move";
+            const bounds = entry.getBoundingClientRect();
+            const after = event.clientY >= bounds.top + bounds.height / 2;
+            if (dropTarget === entry && entry.classList.contains(after ? "border-b-4" : "border-t-4")) return;
+            clearDropTarget();
+            dropTarget = entry;
+            entry.classList.add(after ? "border-b-4" : "border-t-4", "border-emerald-500");
+        });
+        entry.addEventListener("drop", (event) => {
+            const source = draggedProduct;
+            if (!source || source === product) return;
+            event.preventDefault();
+            const after = entry.classList.contains("border-b-4")
+                || (!entry.classList.contains("border-t-4")
+                    && event.clientY >= entry.getBoundingClientRect().top + entry.getBoundingClientRect().height / 2);
+            clearDropTarget();
+            draggedProduct = null;
+            const sourceIndex = products.indexOf(source);
+            let destination = products.indexOf(product) + (after ? 1 : 0);
+            if (sourceIndex < destination) destination -= 1;
+            void moveProduct(source, destination);
+        });
+        entry.append(handle, card);
         cards.appendChild(entry);
         nextCards.set(product, card);
     }
@@ -311,6 +361,8 @@ async function showAuthenticated(user: User | null): Promise<void> {
     login.classList.toggle("hidden", isAdmin);
     editor.classList.toggle("hidden", !isAdmin);
     if (!user) {
+        draggedProduct = null;
+        clearDropTarget();
         products = [];
         productCards.clear();
         element("admin-product-list").replaceChildren();
