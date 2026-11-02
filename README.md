@@ -8,7 +8,7 @@ Cloud Firestoreの`(default)`データベースは東京（`asia-northeast1`）�
 
 管理者は`narenohatehe@gmail.com`の確認済みGoogleログインだけです。Googleアカウント側でも2段階認証を有効にしてください。
 
-Googleログインのプロバイダーは有効化済みです。Vercelの公開ドメインが決まったら、Firebase Authentication → 設定 → 承認済みドメインにそのホスト名を追加します。管理画面は`/admin`です。ルールを変更した場合は`firebase deploy --only firestore:rules --project kabutowebi`で再反映します。
+Googleログインのプロバイダーは有効化済みです。`kabutowebi.vercel.app`はFirebase Authenticationの承認済みドメインに追加済みです。管理画面は`https://kabutowebi.vercel.app/admin`です。ルールを変更した場合は`firebase deploy --only firestore:rules --project kabutowebi`で再反映します。
 
 以降は管理画面で各行の「保存」を押すとFirestoreへ直接反映されます。削除した商品は復元できないため、確認ダイアログが表示されます。公開ページは`published`が`true`の商品だけを表示します。FirestoreはGoogleアカウントで2段階認証が設定されているかを判定できないため、その有効化はGoogleアカウントの設定で管理します。
 
@@ -16,4 +16,4 @@ Googleログインのプロバイダーは有効化済みです。Vercelの公�
 
 ## Vercelで公開
 
-GitHubの`KabutoEbi/KabutoWebi`をVercelへインポートします。ビルドコマンドは`npm run build`、出力ディレクトリは`dist`です（`vercel.json`に設定済み）。公開後に発行されたホスト名をFirebase Authenticationの承認済みドメインに追加すると、`/admin`でGoogleログインできます。
+公開URLは`https://kabutowebi.vercel.app/`です。ビルドコマンドは`npm run build`、出力ディレクトリは`dist`です（`vercel.json`に設定済み）。
