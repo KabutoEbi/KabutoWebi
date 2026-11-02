@@ -37,7 +37,7 @@ function setStatus(message: string, isError = false): void {
 
 function setBusy(value: boolean): void {
     busy = value;
-    for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button")) {
+    for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button, #admin-logout")) {
         button.disabled = busy || button.dataset.boundary === "true";
     }
 }
@@ -307,7 +307,7 @@ async function showAuthenticated(user: User | null): Promise<void> {
     const login = element("admin-login");
     const editor = element("admin-editor");
     const isAdmin = Boolean(user?.emailVerified && user.email?.toLowerCase() === adminEmail);
-    element("admin-heading").classList.toggle("hidden", !isAdmin);
+    element("admin-logout").classList.toggle("hidden", !user);
     login.classList.toggle("hidden", isAdmin);
     editor.classList.toggle("hidden", !isAdmin);
     if (!user) {
@@ -318,7 +318,6 @@ async function showAuthenticated(user: User | null): Promise<void> {
         return;
     }
 
-    element("admin-user").textContent = user.email ?? "ログイン中";
     if (user.email?.toLowerCase() !== adminEmail) {
         setStatus("このGoogleアカウントには管理権限がありません。", true);
         return;
