@@ -71,6 +71,15 @@ function decorateShell(page: PageName): void {
         if (title) title.textContent = heading[1];
         if (description) description.textContent = heading[2];
     }
+
+    const footer = document.querySelector<HTMLElement>(".footer");
+    if (footer) {
+        const adminLink = document.createElement("a");
+        adminLink.href = "/admin.html";
+        adminLink.className = "admin-footer-link";
+        adminLink.textContent = "管理者ページ";
+        footer.appendChild(adminLink);
+    }
 }
 
 async function initializePage(page: PageName): Promise<void> {

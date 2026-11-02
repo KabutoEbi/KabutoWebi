@@ -14,7 +14,8 @@ const designRules: readonly DesignRule[] = [
     [".eyebrow", "mb-5 inline-flex rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700"],
     [".header h1", "max-w-4xl text-5xl font-bold tracking-tight text-slate-950 max-md:text-4xl max-sm:text-3xl"],
     [".header p:last-child", "mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 max-sm:text-base"],
-    [".footer", "mx-auto mt-24 max-w-7xl border-t border-slate-200 px-6 py-8 text-sm text-slate-500 max-md:mt-16"],
+    [".footer", "mx-auto mt-24 flex max-w-7xl items-center justify-between gap-4 border-t border-slate-200 px-6 py-8 text-sm text-slate-500 max-md:mt-16 max-sm:flex-col max-sm:items-start"],
+    [".admin-footer-link", "font-medium text-slate-500 no-underline transition hover:text-emerald-700 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600"],
 
     [".home-container", "mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 pt-12 max-md:grid-cols-1 max-md:px-4"],
     [".portfolio-title", "col-span-full text-xs font-bold uppercase tracking-[0.25em] text-emerald-700"],
