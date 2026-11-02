@@ -172,8 +172,10 @@ async function refreshProducts(): Promise<void> {
 async function showAuthenticated(user: User | null): Promise<void> {
     const login = element("admin-login");
     const editor = element("admin-editor");
-    login.classList.toggle("hidden", Boolean(user));
-    editor.classList.toggle("hidden", !user || !user.emailVerified || user.email?.toLowerCase() !== adminEmail);
+    const isAdmin = Boolean(user?.emailVerified && user.email?.toLowerCase() === adminEmail);
+    element("admin-heading").classList.toggle("hidden", !isAdmin);
+    login.classList.toggle("hidden", isAdmin);
+    editor.classList.toggle("hidden", !isAdmin);
     if (!user) {
         products = [];
         element("admin-table-container").replaceChildren();
