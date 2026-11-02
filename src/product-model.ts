@@ -56,7 +56,7 @@ export function normalizeProduct(value: Record<string, unknown>, id?: string): E
 }
 
 export function validateProduct(product: Product): string | null {
-    if (!product.title.trim()) return "商品名を入力してください。";
+    if (!product.title.trim()) return "プロダクト名を入力してください。";
     if (!Number.isFinite(product.order) || product.order < 0) return "表示順は0以上の数値にしてください。";
     for (const link of product.links) {
         if (!link.label && !link.url) continue;

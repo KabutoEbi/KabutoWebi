@@ -98,7 +98,7 @@ async function saveProduct(product: EditableProduct): Promise<void> {
             const created = await addDoc(collection(getDatabase(), "products"), data);
             product.id = created.id;
         }
-        setStatus(`「${data.title}」を保存しました。商品ページにも反映されます。`);
+        setStatus(`「${data.title}」を保存しました。プロダクトページにも反映されます。`);
         products.sort(compareProducts);
         renderProducts();
     } catch (error: unknown) {
@@ -110,14 +110,14 @@ async function saveProduct(product: EditableProduct): Promise<void> {
 }
 
 async function removeProduct(product: EditableProduct): Promise<void> {
-    if (!window.confirm(`「${product.title || "新しい商品"}」を削除しますか？`)) return;
+    if (!window.confirm(`「${product.title || "新しいプロダクト"}」を削除しますか？`)) return;
 
     setBusy(true);
     try {
         if (product.id) await deleteDoc(doc(getDatabase(), "products", product.id));
         products = products.filter((entry) => entry !== product);
         renderProducts();
-        setStatus("商品を削除しました。");
+        setStatus("プロダクトを削除しました。");
     } catch (error: unknown) {
         console.error("Product deletion failed:", error);
         setStatus("削除できませんでした。Firestoreの権限と接続を確認してください。", true);
@@ -139,7 +139,7 @@ function renderProducts(expand?: EditableProduct): void {
         summary.className = "admin-product-summary";
         const title = document.createElement("span");
         title.className = "admin-product-title";
-        title.textContent = product.title.trim() || "新しい商品";
+        title.textContent = product.title.trim() || "新しいプロダクト";
         const meta = document.createElement("span");
         meta.className = "admin-product-meta";
         const order = document.createElement("span");
@@ -164,9 +164,9 @@ function renderProducts(expand?: EditableProduct): void {
                 product.published = checked;
                 visibility.textContent = checked ? "公開" : "非公開";
             }),
-            inputField("商品名", product.title, (value) => {
+            inputField("プロダクト名", product.title, (value) => {
                 product.title = value;
-                title.textContent = value.trim() || "新しい商品";
+                title.textContent = value.trim() || "新しいプロダクト";
             }, "text", true),
             inputField("説明", product.description, (value) => { product.description = value; }, "textarea", true),
             inputField("使用技術", product.technology, (value) => { product.technology = value; }, "text", true),
@@ -215,7 +215,7 @@ async function refreshProducts(): Promise<void> {
         .map((entry) => normalizeProduct(entry.data(), entry.id))
         .sort(compareProducts);
     renderProducts();
-    setStatus(`${products.length}件の商品を読み込みました。`);
+    setStatus(`${products.length}件のプロダクトを読み込みました。`);
 }
 
 async function showAuthenticated(user: User | null): Promise<void> {
@@ -247,7 +247,7 @@ async function showAuthenticated(user: User | null): Promise<void> {
     } catch (error: unknown) {
         console.error("Admin product loading failed:", error);
         editor.classList.add("hidden");
-        setStatus("商品を読み込めませんでした。Firestoreの権限と接続を確認してください。", true);
+        setStatus("プロダクトを読み込めませんでした。Firestoreの権限と接続を確認してください。", true);
     }
 }
 
@@ -267,7 +267,7 @@ export function initializeAdmin(): void {
         const product = emptyProduct(nextOrder);
         products.push(product);
         renderProducts(product);
-        setStatus("新しい商品を追加しました。入力後に保存を押してください。");
+        setStatus("新しいプロダクトを追加しました。入力後に保存を押してください。");
     });
     onAuthStateChanged(auth, (user) => { void showAuthenticated(user); });
 }

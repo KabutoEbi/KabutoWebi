@@ -64,8 +64,8 @@ const pages: PageDefinition[] = [
     {
         fileName: "admin.html",
         pageName: "admin",
-        title: "商品管理 - KabutoWebi",
-        description: "KabutoWebiの商品管理ページです。",
+        title: "プロダクト管理 - KabutoWebi",
+        description: "KabutoWebiのプロダクト管理ページです。",
         robots: "noindex, nofollow",
     },
 ];
