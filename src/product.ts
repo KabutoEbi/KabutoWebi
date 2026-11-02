@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { applyTailwindDesign } from "./design.js";
 import { getDatabase } from "./firebase.js";
 import { compareProducts, normalizeProduct, type Product, type ProductLink } from "./product-model.js";
@@ -57,13 +57,12 @@ function createProductElement(product: Product): HTMLDivElement {
     return item;
 }
 
-export async function loadProducts(): Promise<void> {
+export function watchProducts(): void {
     const container = document.getElementById("product-container");
     if (!container) return;
 
-    try {
-        const published = query(collection(getDatabase(), "products"), where("published", "==", true));
-        const snapshot = await getDocs(published);
+    const published = query(collection(getDatabase(), "products"), where("published", "==", true));
+    onSnapshot(published, (snapshot) => {
         const products = snapshot.docs
             .map((document) => normalizeProduct(document.data(), document.id))
             .filter((product) => product.title)
@@ -76,12 +75,13 @@ export async function loadProducts(): Promise<void> {
             message.textContent = "公開中の作品はありません。";
             container.appendChild(message);
         }
-    } catch (error: unknown) {
+        applyTailwindDesign(container);
+    }, (error) => {
         console.error("Product loading failed:", error);
         const message = document.createElement("p");
         message.className = "product-load-error";
         message.textContent = "作品一覧を読み込めませんでした。時間をおいて再読み込みしてください。";
         container.replaceChildren(message);
-    }
-    applyTailwindDesign(container);
+        applyTailwindDesign(container);
+    });
 }

@@ -2,7 +2,7 @@ import { initializeAdmin } from "./admin.js";
 import { applyTailwindDesign } from "./design.js";
 import { initialize404Interaction } from "./interactions.js";
 import { pageTemplates, type PageName } from "./pages.js";
-import { loadProducts } from "./product.js";
+import { watchProducts } from "./product.js";
 
 declare global {
     interface Window {
@@ -30,14 +30,14 @@ function getPageName(): PageName {
     return page && page in pageTemplates ? page as PageName : "notFound";
 }
 
-async function initializePage(page: PageName): Promise<void> {
+function initializePage(page: PageName): void {
     document.body.innerHTML = pageTemplates[page];
     applyTailwindDesign();
     initializeAnalytics();
 
     if (page === "product" || page === "admin") {
         try {
-            if (page === "product") await loadProducts();
+            if (page === "product") watchProducts();
             if (page === "admin") initializeAdmin();
         } catch (error: unknown) {
             console.error("Firebase initialization failed:", error);
@@ -61,4 +61,4 @@ async function initializePage(page: PageName): Promise<void> {
     }
 }
 
-void initializePage(getPageName());
+initializePage(getPageName());

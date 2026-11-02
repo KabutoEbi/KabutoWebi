@@ -116,11 +116,13 @@ async function saveProduct(product: EditableProduct): Promise<void> {
         await batch.commit();
         product.id = reference.id;
         syncLocalOrder();
-        setStatus(`「${data.title}」を保存しました。プロダクトページにも反映されます。`);
+        setStatus(data.published
+            ? `「${data.title}」を更新しました。プロダクトページにも反映されます。`
+            : `「${data.title}」を非公開で更新しました。`);
         renderProducts();
     } catch (error: unknown) {
         console.error("Product save failed:", error);
-        setStatus("保存できませんでした。Firestoreの権限と接続を確認してください。", true);
+        setStatus("更新できませんでした。Firestoreの権限と接続を確認してください。", true);
     } finally {
         setBusy(false);
     }
@@ -160,7 +162,7 @@ async function moveProduct(product: EditableProduct, direction: -1 | 1): Promise
         syncLocalOrder();
         setStatus(changed
             ? "並び順を保存しました。プロダクトページにも反映されます。"
-            : "未保存のプロダクトを並べ替えました。保存するとプロダクトページにも反映されます。");
+            : "未保存のプロダクトを並べ替えました。更新するとプロダクトページにも反映されます。");
     } catch (error: unknown) {
         products = original;
         renderProducts();
@@ -256,7 +258,7 @@ function renderProducts(expand?: EditableProduct): void {
         const save = document.createElement("button");
         save.type = "button";
         save.className = "admin-primary-button";
-        save.textContent = "保存";
+        save.textContent = "更新";
         save.addEventListener("click", () => { void saveProduct(product); });
         actions.appendChild(save);
         const remove = document.createElement("button");
@@ -349,7 +351,7 @@ export function initializeAdmin(): void {
         const product = emptyProduct(0);
         products.unshift(product);
         renderProducts(product);
-        setStatus("新しいプロダクトを追加しました。入力後に保存を押してください。");
+        setStatus("新しいプロダクトを追加しました。入力後に更新を押してください。");
     });
     onAuthStateChanged(auth, (user) => { void showAuthenticated(user); });
 }
