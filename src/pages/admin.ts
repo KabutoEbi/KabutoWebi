@@ -19,6 +19,6 @@ export const adminPage = `<main class="admin-page">
             <button type="button" id="admin-add">商品を追加</button>
             <button type="button" id="admin-logout">ログアウト</button>
         </div>
-        <div id="admin-table-container" class="admin-table-container"></div>
+        <div id="admin-product-list" class="admin-product-list"></div>
     </section>
 </main>`;

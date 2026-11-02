@@ -19,6 +19,7 @@ import { getAuthentication, getDatabase } from "./firebase.js";
 import { emptyProduct, normalizeProduct, validateProduct, type EditableProduct, type Product } from "./product-model.js";
 
 let products: EditableProduct[] = [];
+let productCards = new Map<EditableProduct, HTMLDetailsElement>();
 
 function element(id: string): HTMLElement {
     const found = document.getElementById(id);
@@ -54,24 +55,31 @@ function dataForFirestore(product: EditableProduct): Product {
     };
 }
 
-function inputCell(row: HTMLTableRowElement, label: string, value: string | number, onInput: (value: string) => void, type = "text"): void {
-    const cell = row.insertCell();
-    const input = label === "説明" ? document.createElement("textarea") : document.createElement("input");
+function inputField(label: string, value: string | number, onInput: (value: string) => void, type = "text", wide = false): HTMLLabelElement {
+    const field = document.createElement("label");
+    field.className = "admin-field";
+    if (wide) field.classList.add("admin-field-wide");
+    const caption = document.createElement("span");
+    caption.textContent = label;
+    const input = type === "textarea" ? document.createElement("textarea") : document.createElement("input");
     if (input instanceof HTMLInputElement) input.type = type;
     input.value = String(value);
-    input.setAttribute("aria-label", label);
     input.addEventListener("input", () => onInput(input.value));
-    cell.appendChild(input);
+    field.append(caption, input);
+    return field;
 }
 
-function checkboxCell(row: HTMLTableRowElement, label: string, checked: boolean, onChange: (checked: boolean) => void): void {
-    const cell = row.insertCell();
+function checkboxField(label: string, checked: boolean, onChange: (checked: boolean) => void): HTMLLabelElement {
+    const field = document.createElement("label");
+    field.className = "admin-checkbox-field";
     const input = document.createElement("input");
     input.type = "checkbox";
     input.checked = checked;
-    input.setAttribute("aria-label", label);
     input.addEventListener("change", () => onChange(input.checked));
-    cell.appendChild(input);
+    const caption = document.createElement("span");
+    caption.textContent = label;
+    field.append(input, caption);
+    return field;
 }
 
 async function saveProduct(product: EditableProduct): Promise<void> {
@@ -91,7 +99,7 @@ async function saveProduct(product: EditableProduct): Promise<void> {
             product.id = created.id;
         }
         setStatus(`「${data.title}」を保存しました。商品ページにも反映されます。`);
-        renderTable();
+        renderProducts();
     } catch (error: unknown) {
         console.error("Product save failed:", error);
         setStatus("保存できませんでした。Firestoreの権限と接続を確認してください。", true);
@@ -107,7 +115,7 @@ async function removeProduct(product: EditableProduct): Promise<void> {
     try {
         if (product.id) await deleteDoc(doc(getDatabase(), "products", product.id));
         products = products.filter((entry) => entry !== product);
-        renderTable();
+        renderProducts();
         setStatus("商品を削除しました。");
     } catch (error: unknown) {
         console.error("Product deletion failed:", error);
@@ -117,32 +125,67 @@ async function removeProduct(product: EditableProduct): Promise<void> {
     }
 }
 
-function renderTable(): void {
-    const container = element("admin-table-container");
-    const table = document.createElement("table");
-    table.className = "admin-table";
-    const head = table.createTHead().insertRow();
-    for (const name of ["表示順", "公開", "商品名", "説明", "使用技術", "リンク1表示名", "リンク1 URL", "リンク1を別タブで開く", "リンク2表示名", "リンク2 URL", "リンク2を別タブで開く", "操作"]) {
-        const header = document.createElement("th");
-        header.textContent = name;
-        head.appendChild(header);
-    }
-
-    const body = table.createTBody();
+function renderProducts(expand?: EditableProduct): void {
+    const container = element("admin-product-list");
+    const openProducts = new Set([...productCards].filter(([, card]) => card.open).map(([product]) => product));
+    const nextCards = new Map<EditableProduct, HTMLDetailsElement>();
+    const cards = document.createDocumentFragment();
     for (const product of products) {
-        const row = body.insertRow();
-        inputCell(row, "表示順", product.order, (value) => { product.order = Number(value); }, "number");
-        checkboxCell(row, "公開", product.published, (value) => { product.published = value; });
-        inputCell(row, "商品名", product.title, (value) => { product.title = value; });
-        inputCell(row, "説明", product.description, (value) => { product.description = value; });
-        inputCell(row, "使用技術", product.technology, (value) => { product.technology = value; });
+        const card = document.createElement("details");
+        card.className = "admin-product-card group";
+        card.open = openProducts.has(product) || product === expand;
+        const summary = document.createElement("summary");
+        summary.className = "admin-product-summary";
+        const title = document.createElement("span");
+        title.className = "admin-product-title";
+        title.textContent = product.title.trim() || "新しい商品";
+        const meta = document.createElement("span");
+        meta.className = "admin-product-meta";
+        const order = document.createElement("span");
+        order.textContent = `表示順 ${product.order}`;
+        const visibility = document.createElement("span");
+        visibility.textContent = product.published ? "公開" : "非公開";
+        const chevron = document.createElement("span");
+        chevron.className = "admin-product-chevron";
+        chevron.setAttribute("aria-hidden", "true");
+        chevron.textContent = "⌄";
+        meta.append(order, visibility);
+        summary.append(title, meta, chevron);
+
+        const fields = document.createElement("div");
+        fields.className = "admin-product-fields";
+        fields.append(
+            inputField("表示順", product.order, (value) => {
+                product.order = Number(value);
+                order.textContent = `表示順 ${value}`;
+            }, "number"),
+            checkboxField("公開", product.published, (checked) => {
+                product.published = checked;
+                visibility.textContent = checked ? "公開" : "非公開";
+            }),
+            inputField("商品名", product.title, (value) => {
+                product.title = value;
+                title.textContent = value.trim() || "新しい商品";
+            }, "text", true),
+            inputField("説明", product.description, (value) => { product.description = value; }, "textarea", true),
+            inputField("使用技術", product.technology, (value) => { product.technology = value; }, "text", true),
+        );
         for (let index = 0; index < 2; index += 1) {
             const link = product.links[index];
-            inputCell(row, `リンク${index + 1}表示名`, link.label, (value) => { link.label = value; });
-            inputCell(row, `リンク${index + 1} URL`, link.url, (value) => { link.url = value; });
-            checkboxCell(row, `リンク${index + 1}を別タブで開く`, link.newTab, (value) => { link.newTab = value; });
+            const group = document.createElement("fieldset");
+            group.className = "admin-link-group";
+            const legend = document.createElement("legend");
+            legend.textContent = `リンク ${index + 1}`;
+            group.append(
+                legend,
+                inputField("表示名", link.label, (value) => { link.label = value; }),
+                inputField("URL", link.url, (value) => { link.url = value; }),
+                checkboxField("別タブで開く", link.newTab, (checked) => { link.newTab = checked; }),
+            );
+            fields.appendChild(group);
         }
-        const actions = row.insertCell();
+        const actions = document.createElement("div");
+        actions.className = "admin-card-actions";
         const save = document.createElement("button");
         save.type = "button";
         save.className = "admin-primary-button";
@@ -155,8 +198,13 @@ function renderTable(): void {
         remove.textContent = "削除";
         remove.addEventListener("click", () => { void removeProduct(product); });
         actions.appendChild(remove);
+        fields.appendChild(actions);
+        card.append(summary, fields);
+        cards.appendChild(card);
+        nextCards.set(product, card);
     }
-    container.replaceChildren(table);
+    container.replaceChildren(cards);
+    productCards = nextCards;
     applyTailwindDesign(container);
 }
 
@@ -165,7 +213,7 @@ async function refreshProducts(): Promise<void> {
     products = snapshot.docs
         .map((entry) => normalizeProduct(entry.data(), entry.id))
         .sort((a, b) => a.order - b.order);
-    renderTable();
+    renderProducts();
     setStatus(`${products.length}件の商品を読み込みました。`);
 }
 
@@ -178,7 +226,8 @@ async function showAuthenticated(user: User | null): Promise<void> {
     editor.classList.toggle("hidden", !isAdmin);
     if (!user) {
         products = [];
-        element("admin-table-container").replaceChildren();
+        productCards.clear();
+        element("admin-product-list").replaceChildren();
         setStatus("管理者としてログインしてください。");
         return;
     }
@@ -214,9 +263,10 @@ export function initializeAdmin(): void {
     element("admin-logout").addEventListener("click", () => { void signOut(auth); });
     element("admin-add").addEventListener("click", () => {
         const nextOrder = Math.max(0, ...products.map((product) => product.order)) + 1;
-        products.push(emptyProduct(nextOrder));
-        renderTable();
-        setStatus("新しい商品を追加しました。入力後にその行の保存を押してください。");
+        const product = emptyProduct(nextOrder);
+        products.push(product);
+        renderProducts(product);
+        setStatus("新しい商品を追加しました。入力後に保存を押してください。");
     });
     onAuthStateChanged(auth, (user) => { void showAuthenticated(user); });
 }
