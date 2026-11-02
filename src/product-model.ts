@@ -30,13 +30,20 @@ export function emptyProduct(order: number): EditableProduct {
         technology: "",
         links: [
             { label: "", url: "", newTab: true },
-            { label: "", url: "", newTab: true },
         ],
     };
 }
 
 export function normalizeProduct(value: Record<string, unknown>, id?: string): EditableProduct {
     const links = Array.isArray(value.links) ? value.links : [];
+    const normalizedLinks = [0, 1].map((index) => {
+        const link = links[index] as Partial<ProductLink> | undefined;
+        return {
+            label: String(link?.label ?? ""),
+            url: String(link?.url ?? ""),
+            newTab: link?.newTab === true,
+        };
+    });
     return {
         id,
         order: Number(value.order) || 0,
@@ -44,14 +51,7 @@ export function normalizeProduct(value: Record<string, unknown>, id?: string): E
         title: String(value.title ?? ""),
         description: String(value.description ?? ""),
         technology: String(value.technology ?? ""),
-        links: [0, 1].map((index) => {
-            const link = links[index] as Partial<ProductLink> | undefined;
-            return {
-                label: String(link?.label ?? ""),
-                url: String(link?.url ?? ""),
-                newTab: link?.newTab === true,
-            };
-        }),
+        links: normalizedLinks.filter((link, index) => index === 0 || Boolean(link.label.trim() || link.url.trim())),
     };
 }
 

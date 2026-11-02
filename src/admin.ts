@@ -6,12 +6,12 @@ import {
     type User,
 } from "firebase/auth";
 import {
-    addDoc,
     collection,
     deleteDoc,
     doc,
     getDocs,
-    setDoc,
+    writeBatch,
+    type WriteBatch,
 } from "firebase/firestore";
 import { applyTailwindDesign } from "./design.js";
 import { adminEmail } from "./firebase-config.js";
@@ -20,6 +20,7 @@ import { compareProducts, emptyProduct, normalizeProduct, validateProduct, type 
 
 let products: EditableProduct[] = [];
 let productCards = new Map<EditableProduct, HTMLDetailsElement>();
+let busy = false;
 
 function element(id: string): HTMLElement {
     const found = document.getElementById(id);
@@ -34,10 +35,25 @@ function setStatus(message: string, isError = false): void {
     status.classList.toggle("text-green-800", !isError);
 }
 
-function setBusy(busy: boolean): void {
+function setBusy(value: boolean): void {
+    busy = value;
     for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button")) {
-        button.disabled = busy;
+        button.disabled = busy || button.dataset.boundary === "true";
     }
+}
+
+function queueOrderUpdates(batch: WriteBatch, excluded?: EditableProduct): boolean {
+    let changed = false;
+    products.forEach((product, index) => {
+        if (!product.id || product === excluded || product.order === index + 1) return;
+        batch.update(doc(getDatabase(), "products", product.id), { order: index + 1 });
+        changed = true;
+    });
+    return changed;
+}
+
+function syncLocalOrder(): void {
+    products.forEach((product, index) => { product.order = index + 1; });
 }
 
 function dataForFirestore(product: EditableProduct): Product {
@@ -83,7 +99,7 @@ function checkboxField(label: string, checked: boolean, onChange: (checked: bool
 }
 
 async function saveProduct(product: EditableProduct): Promise<void> {
-    const data = dataForFirestore(product);
+    const data = { ...dataForFirestore(product), order: products.indexOf(product) + 1 };
     const issue = validateProduct(data);
     if (issue) {
         setStatus(issue, true);
@@ -92,14 +108,15 @@ async function saveProduct(product: EditableProduct): Promise<void> {
 
     setBusy(true);
     try {
-        if (product.id) {
-            await setDoc(doc(getDatabase(), "products", product.id), data);
-        } else {
-            const created = await addDoc(collection(getDatabase(), "products"), data);
-            product.id = created.id;
-        }
+        const database = getDatabase();
+        const batch = writeBatch(database);
+        const reference = product.id ? doc(database, "products", product.id) : doc(collection(database, "products"));
+        batch.set(reference, data);
+        queueOrderUpdates(batch, product);
+        await batch.commit();
+        product.id = reference.id;
+        syncLocalOrder();
         setStatus(`「${data.title}」を保存しました。プロダクトページにも反映されます。`);
-        products.sort(compareProducts);
         renderProducts();
     } catch (error: unknown) {
         console.error("Product save failed:", error);
@@ -126,12 +143,43 @@ async function removeProduct(product: EditableProduct): Promise<void> {
     }
 }
 
+async function moveProduct(product: EditableProduct, direction: -1 | 1): Promise<void> {
+    const index = products.indexOf(product);
+    const destination = index + direction;
+    if (busy || index < 0 || destination < 0 || destination >= products.length) return;
+
+    const original = [...products];
+    products.splice(index, 1);
+    products.splice(destination, 0, product);
+    setBusy(true);
+    renderProducts();
+    try {
+        const batch = writeBatch(getDatabase());
+        const changed = queueOrderUpdates(batch);
+        if (changed) await batch.commit();
+        syncLocalOrder();
+        setStatus(changed
+            ? "並び順を保存しました。プロダクトページにも反映されます。"
+            : "未保存のプロダクトを並べ替えました。保存するとプロダクトページにも反映されます。");
+    } catch (error: unknown) {
+        products = original;
+        renderProducts();
+        console.error("Product reordering failed:", error);
+        setStatus("並び順を保存できませんでした。Firestoreの権限と接続を確認してください。", true);
+    } finally {
+        setBusy(false);
+        productCards.get(product)?.querySelector("summary")?.focus();
+    }
+}
+
 function renderProducts(expand?: EditableProduct): void {
     const container = element("admin-product-list");
     const openProducts = new Set([...productCards].filter(([, card]) => card.open).map(([product]) => product));
     const nextCards = new Map<EditableProduct, HTMLDetailsElement>();
     const cards = document.createDocumentFragment();
-    for (const product of products) {
+    for (const [index, product] of products.entries()) {
+        const entry = document.createElement("div");
+        entry.className = "admin-product-entry";
         const card = document.createElement("details");
         card.className = "admin-product-card group";
         card.open = openProducts.has(product) || product === expand;
@@ -143,7 +191,7 @@ function renderProducts(expand?: EditableProduct): void {
         const meta = document.createElement("span");
         meta.className = "admin-product-meta";
         const order = document.createElement("span");
-        order.textContent = `表示順 ${product.order}`;
+        order.textContent = `表示順 ${index + 1}`;
         const visibility = document.createElement("span");
         visibility.textContent = product.published ? "公開" : "非公開";
         const chevron = document.createElement("span");
@@ -156,10 +204,6 @@ function renderProducts(expand?: EditableProduct): void {
         const fields = document.createElement("div");
         fields.className = "admin-product-fields";
         fields.append(
-            inputField("表示順", product.order, (value) => {
-                product.order = Number(value);
-                order.textContent = `表示順 ${value}`;
-            }, "number"),
             checkboxField("公開", product.published, (checked) => {
                 product.published = checked;
                 visibility.textContent = checked ? "公開" : "非公開";
@@ -171,19 +215,41 @@ function renderProducts(expand?: EditableProduct): void {
             inputField("説明", product.description, (value) => { product.description = value; }, "textarea", true),
             inputField("使用技術", product.technology, (value) => { product.technology = value; }, "text", true),
         );
-        for (let index = 0; index < 2; index += 1) {
-            const link = product.links[index];
+        for (const [linkIndex, link] of product.links.entries()) {
             const group = document.createElement("fieldset");
             group.className = "admin-link-group";
             const legend = document.createElement("legend");
-            legend.textContent = `リンク ${index + 1}`;
+            legend.textContent = `リンク ${linkIndex + 1}`;
             group.append(
                 legend,
                 inputField("表示名", link.label, (value) => { link.label = value; }),
                 inputField("URL", link.url, (value) => { link.url = value; }),
                 checkboxField("別タブで開く", link.newTab, (checked) => { link.newTab = checked; }),
             );
+            if (linkIndex === 1) {
+                const removeLink = document.createElement("button");
+                removeLink.type = "button";
+                removeLink.className = "admin-secondary-button";
+                removeLink.textContent = "リンク2を削除";
+                removeLink.addEventListener("click", () => {
+                    product.links.splice(1, 1);
+                    renderProducts(product);
+                });
+                group.appendChild(removeLink);
+            }
             fields.appendChild(group);
+        }
+        if (product.links.length < 2) {
+            const addLink = document.createElement("button");
+            addLink.type = "button";
+            addLink.className = "admin-secondary-button admin-add-link";
+            addLink.textContent = "リンク2を追加";
+            addLink.addEventListener("click", () => {
+                product.links.push({ label: "", url: "", newTab: true });
+                renderProducts(product);
+                productCards.get(product)?.querySelector<HTMLInputElement>(".admin-link-group:last-of-type input[type='text']")?.focus();
+            });
+            fields.appendChild(addLink);
         }
         const actions = document.createElement("div");
         actions.className = "admin-card-actions";
@@ -201,12 +267,29 @@ function renderProducts(expand?: EditableProduct): void {
         actions.appendChild(remove);
         fields.appendChild(actions);
         card.append(summary, fields);
-        cards.appendChild(card);
+        const controls = document.createElement("div");
+        controls.className = "admin-reorder-controls";
+        for (const [label, direction, boundary] of [
+            ["上へ", -1, index === 0],
+            ["下へ", 1, index === products.length - 1],
+        ] as const) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "admin-reorder-button";
+            button.textContent = label;
+            button.setAttribute("aria-label", `「${product.title.trim() || "新しいプロダクト"}」を${label}移動`);
+            if (boundary) button.dataset.boundary = "true";
+            button.addEventListener("click", () => { void moveProduct(product, direction); });
+            controls.appendChild(button);
+        }
+        entry.append(card, controls);
+        cards.appendChild(entry);
         nextCards.set(product, card);
     }
     container.replaceChildren(cards);
     productCards = nextCards;
     applyTailwindDesign(container);
+    setBusy(busy);
 }
 
 async function refreshProducts(): Promise<void> {
@@ -263,9 +346,8 @@ export function initializeAdmin(): void {
     });
     element("admin-logout").addEventListener("click", () => { void signOut(auth); });
     element("admin-add").addEventListener("click", () => {
-        const nextOrder = Math.max(0, ...products.map((product) => product.order)) + 1;
-        const product = emptyProduct(nextOrder);
-        products.push(product);
+        const product = emptyProduct(0);
+        products.unshift(product);
         renderProducts(product);
         setStatus("新しいプロダクトを追加しました。入力後に保存を押してください。");
     });

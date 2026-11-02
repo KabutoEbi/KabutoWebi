@@ -19,6 +19,7 @@ export const adminPage = `<main class="admin-page">
             <button type="button" id="admin-add">プロダクトを追加</button>
             <button type="button" id="admin-logout">ログアウト</button>
         </div>
+        <p class="admin-order-help">上へ・下へボタンで並べ替えできます。保存済みのプロダクトの順序は自動で反映されます。</p>
         <div id="admin-product-list" class="admin-product-list"></div>
     </section>
 </main>`;
