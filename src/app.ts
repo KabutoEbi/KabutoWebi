@@ -30,39 +30,8 @@ function getPageName(): PageName {
     return page && page in pageTemplates ? page as PageName : "notFound";
 }
 
-function decorateShell(page: PageName): void {
-    const navigation = document.querySelector<HTMLElement>(".sidebar");
-    if (navigation) {
-        const brand = document.createElement("a");
-        brand.href = "/";
-        brand.className = "site-brand";
-        const icon = document.createElement("span");
-        icon.className = "brand-icon";
-        icon.textContent = "K";
-        const name = document.createElement("span");
-        name.textContent = "KabutoWebi";
-        brand.append(icon, name);
-        navigation.prepend(brand);
-
-        const activePath = page === "home" ? "/" : page === "veryfunny" || page === "stackstones" ? "/product.html" : `/${page}.html`;
-        navigation.querySelectorAll<HTMLAnchorElement>("li a").forEach((link) => {
-            if (link.getAttribute("href") === activePath) link.setAttribute("aria-current", "page");
-        });
-    }
-
-    const footer = document.querySelector<HTMLElement>(".footer");
-    if (footer) {
-        const adminLink = document.createElement("a");
-        adminLink.href = "/admin.html";
-        adminLink.className = "admin-footer-link";
-        adminLink.textContent = "管理者ページ";
-        footer.appendChild(adminLink);
-    }
-}
-
 async function initializePage(page: PageName): Promise<void> {
     document.body.innerHTML = pageTemplates[page];
-    decorateShell(page);
     applyTailwindDesign();
     initializeAnalytics();
 
