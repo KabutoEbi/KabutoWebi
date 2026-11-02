@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'narenohatehe@gmail.com'
+        && request.auth.token.email_verified == true
+        && request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+
+    match /products/{productId} {
+      allow read: if isAdmin() || resource.data.published == true;
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}
