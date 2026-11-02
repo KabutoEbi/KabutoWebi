@@ -19,6 +19,7 @@ export const pageTemplates = {
 
             <div class="product-link-section">
                 <h2>作品を見る</h2>
+                <p>Web、アプリ、ゲーム、電子工作。ジャンルをまたいで作ったものを紹介しています。</p>
                 <a href="/product.html" class="product-link-button">Product →</a>
             </div>
 

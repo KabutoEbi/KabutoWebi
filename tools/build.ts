@@ -216,8 +216,8 @@ const webManifest = {
             purpose: "maskable",
         },
     ],
-    theme_color: "#000080",
-    background_color: "#f0f0f0",
+    theme_color: "#059669",
+    background_color: "#ffffff",
     display: "standalone",
 };
 

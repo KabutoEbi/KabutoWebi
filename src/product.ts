@@ -31,6 +31,11 @@ function createProductElement(product: Product): HTMLDivElement {
     const item = document.createElement("div");
     item.className = "product-item";
 
+    const index = document.createElement("span");
+    index.className = "product-index";
+    index.textContent = `PROJECT / ${String(product.order).padStart(2, "0")}`;
+    item.appendChild(index);
+
     const title = document.createElement("h3");
     title.textContent = product.title;
     item.appendChild(title);
@@ -45,7 +50,10 @@ function createProductElement(product: Product): HTMLDivElement {
     technology.textContent = `使用技術: ${product.technology}`;
     item.appendChild(technology);
 
-    product.links.forEach((link) => appendLink(item, link));
+    const actions = document.createElement("div");
+    actions.className = "product-actions";
+    product.links.forEach((link) => appendLink(actions, link));
+    item.appendChild(actions);
     return item;
 }
 

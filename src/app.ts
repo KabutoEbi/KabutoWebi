@@ -30,8 +30,52 @@ function getPageName(): PageName {
     return page && page in pageTemplates ? page as PageName : "notFound";
 }
 
+function decorateShell(page: PageName): void {
+    const navigation = document.querySelector<HTMLElement>(".sidebar");
+    if (navigation) {
+        const brand = document.createElement("a");
+        brand.href = "/";
+        brand.className = "site-brand";
+        const icon = document.createElement("span");
+        icon.className = "brand-icon";
+        icon.textContent = "K";
+        const name = document.createElement("span");
+        name.textContent = "KabutoWebi";
+        brand.append(icon, name);
+        navigation.prepend(brand);
+
+        const activePath = page === "home" ? "/" : page === "veryfunny" || page === "stackstones" ? "/product.html" : `/${page}.html`;
+        navigation.querySelectorAll<HTMLAnchorElement>("li a").forEach((link) => {
+            if (link.getAttribute("href") === activePath) link.setAttribute("aria-current", "page");
+        });
+    }
+
+    const headings: Partial<Record<PageName, [string, string, string]>> = {
+        home: ["Portfolio / KabutoEbi", "つくることを、楽しむ。", "アプリ、ゲーム、電子工作。興味の向くままに作ったものをまとめています。"],
+        product: ["Selected work", "つくったもの", "小さな実験から、じっくり取り組んだ作品まで。これまでの制作を紹介します。"],
+        clothes: ["Original goods", "身につけるアイデア", "オリジナルデザインのグッズをSUZURIで公開しています。"],
+        about: ["About me", "こんにちは、KabutoEbiです。", "プログラミング、ものづくり、ロードバイク。好きなことを少しずつ広げています。"],
+        veryfunny: ["Word play", "言葉であそぶ。", "思いついた言葉遊びを集めました。"],
+        stackstones: ["Browser game", "賽の河原の石積み", "Unityで制作したブラウザゲームです。"],
+        notFound: ["404 / Not found", "ページが見つかりません", "URLを確認するか、ホームから探してみてください。"],
+    };
+    const heading = headings[page];
+    const header = document.querySelector<HTMLElement>(".header");
+    if (heading && header) {
+        const eyebrow = document.createElement("p");
+        eyebrow.className = "eyebrow";
+        eyebrow.textContent = heading[0];
+        header.prepend(eyebrow);
+        const title = header.querySelector("h1");
+        const description = header.querySelector("p:not(.eyebrow)");
+        if (title) title.textContent = heading[1];
+        if (description) description.textContent = heading[2];
+    }
+}
+
 async function initializePage(page: PageName): Promise<void> {
     document.body.innerHTML = pageTemplates[page];
+    decorateShell(page);
     applyTailwindDesign();
     initializeAnalytics();
 
