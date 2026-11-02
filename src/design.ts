@@ -2,18 +2,18 @@ type DesignRule = readonly [selector: string, classes: string];
 
 const designRules: readonly DesignRule[] = [
     ["html", "scroll-smooth bg-white"],
-    ["body", "min-h-screen bg-white font-sans text-slate-800 antialiased"],
+    ["body", "flex min-h-screen flex-col bg-white font-sans text-slate-800 antialiased"],
     [".sidebar", "sticky top-0 z-30 flex w-full items-center justify-between border-b border-slate-200 bg-white/95 px-6 py-4 backdrop-blur-xl max-sm:flex-col max-sm:gap-4 max-sm:px-3"],
     [".site-brand", "inline-flex items-center gap-3 text-lg font-bold tracking-tight text-slate-950 no-underline"],
     [".brand-icon", "flex size-10 items-center justify-center rounded-2xl bg-emerald-600 font-black text-white"],
     [".sidebar ul", "flex list-none items-center gap-1 max-sm:w-full max-sm:justify-center max-sm:gap-0"],
     [".sidebar li a", "block rounded-full px-4 py-2 text-sm font-medium text-slate-600 no-underline transition hover:bg-emerald-50 hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-emerald-600 max-sm:px-3"],
     [".sidebar li a[aria-current='page']", "bg-emerald-50 font-semibold text-emerald-700"],
-    [".main-content", "min-h-screen w-full"],
-    [".footer", "mx-auto mt-24 flex max-w-7xl items-center justify-between gap-4 border-t border-slate-200 px-6 py-8 text-sm text-slate-500 max-md:mt-16 max-sm:flex-col max-sm:items-start"],
+    [".main-content", "flex w-full flex-1 flex-col gap-16"],
+    [".footer", "mx-auto mt-auto flex w-full max-w-7xl items-center justify-between gap-4 border-t border-slate-200 px-6 py-8 text-sm text-slate-500 max-sm:flex-col max-sm:items-start"],
     [".admin-footer-link", "font-medium text-slate-500 no-underline transition hover:text-emerald-700 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600"],
 
-    [".home-container", "mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 pt-12 max-md:grid-cols-1 max-md:px-4"],
+    [".home-container", "mx-auto grid w-full max-w-7xl grid-cols-2 gap-6 px-6 pt-12 max-md:grid-cols-1 max-md:px-4"],
     [".portfolio-title", "col-span-full text-xs font-bold uppercase tracking-[0.25em] text-emerald-700"],
     [".description", "col-span-full max-w-3xl text-2xl font-medium leading-relaxed tracking-tight text-slate-700 max-md:text-xl"],
     [".product-link-section", "col-span-full flex min-h-72 flex-col items-start justify-between rounded-[2rem] bg-slate-950 p-10 text-white shadow-xl shadow-slate-200 max-sm:min-h-60 max-sm:p-7"],
@@ -26,7 +26,7 @@ const designRules: readonly DesignRule[] = [
     [".contact", "grid grid-cols-2 gap-2.5 max-sm:grid-cols-1"],
     [".contact li a", "flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 no-underline transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800"],
 
-    [".product-container", "mx-auto grid max-w-7xl grid-cols-3 gap-5 px-6 pt-12 max-lg:grid-cols-2 max-md:px-4 max-sm:grid-cols-1"],
+    [".product-container", "mx-auto grid w-full max-w-7xl grid-cols-3 gap-5 px-6 pt-12 max-lg:grid-cols-2 max-md:px-4 max-sm:grid-cols-1"],
     [".product-load-message,.product-load-error", "col-span-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-12 text-center text-slate-600"],
     [".product-load-error", "border-red-200 bg-red-50 text-red-700"],
     [".product-item", "flex min-h-72 flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/5 max-sm:min-h-0 max-sm:p-6"],
@@ -36,14 +36,14 @@ const designRules: readonly DesignRule[] = [
     [".skill-description", "mt-5 border-t border-slate-100 pt-4 text-xs font-medium text-slate-500"],
     [".product-actions", "mt-5 flex flex-wrap gap-2"],
     [".product-actions a", "inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold text-emerald-800 no-underline transition hover:bg-emerald-100"],
-    [".excuse", "mx-auto mt-16 max-w-7xl px-6 text-center text-sm italic text-slate-400"],
+    [".excuse", "mx-auto w-full max-w-7xl px-6 text-center text-sm italic text-slate-400"],
 
-    [".clothes", "mx-auto flex max-w-7xl flex-wrap justify-center gap-5 px-6 pt-12 max-md:px-4"],
+    [".clothes", "mx-auto flex w-full max-w-7xl flex-wrap justify-center gap-5 px-6 pt-12 max-md:px-4"],
     [".clothes > p", "w-full text-center"],
     [".clothes > p a", "inline-flex rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white no-underline hover:bg-emerald-700"],
     [".clothes iframe", "max-w-full rounded-2xl border border-slate-200 bg-white shadow-sm"],
 
-    [".profile", "mx-auto flex max-w-4xl flex-col gap-6 px-6 pt-12 max-md:px-4"],
+    [".profile", "mx-auto flex w-full max-w-4xl flex-col gap-6 px-6 pt-12 max-md:px-4"],
     [".introduction,.tech-stack,.bike-section,.travel-section", "rounded-3xl border border-slate-200 bg-white p-8 shadow-sm max-sm:p-6"],
     [".introduction", "flex flex-col items-start"],
     [".introduction h2,.tech-stack h2,.bike-section h2,.travel-section h2", "mb-5 text-2xl font-semibold tracking-tight text-slate-950"],
@@ -57,7 +57,7 @@ const designRules: readonly DesignRule[] = [
     [".bike-section p", "mt-3 text-sm text-slate-500"],
     [".travel-section p", "mb-2 leading-relaxed text-slate-600"],
 
-    [".veryfunny-container,.stackstones-container", "mx-auto max-w-7xl px-6 pt-12 max-md:px-4"],
+    [".veryfunny-container,.stackstones-container", "mx-auto w-full max-w-7xl px-6 pt-12 max-md:px-4"],
     [".veryfunny-title,.stackstones-title", "mb-3 text-3xl font-semibold tracking-tight text-slate-950"],
     [".veryfunny-subtitle", "mb-8 text-slate-600"],
     [".veryfunny-list", "grid list-none grid-cols-2 gap-3 max-md:grid-cols-1"],
@@ -66,7 +66,7 @@ const designRules: readonly DesignRule[] = [
     [".stackstones-note", "mb-6 text-sm text-slate-500"],
     [".stackstones-iframe", "mx-auto block max-w-full rounded-2xl border border-slate-200 shadow-lg"],
 
-    [".error-container", "mx-auto flex min-h-[60vh] max-w-7xl items-center justify-center px-6 py-16"],
+    [".error-container", "mx-auto flex min-h-[60vh] w-full max-w-7xl items-center justify-center px-6 py-16"],
     [".error-box", "w-full max-w-xl rounded-[2rem] border border-slate-200 bg-white p-10 text-center shadow-xl shadow-slate-200/60 max-sm:p-7"],
     [".error-title", "mb-3 text-8xl font-bold tracking-tight text-emerald-600 max-sm:text-7xl"],
     [".error-message", "mb-4 text-2xl font-semibold text-slate-950"],
@@ -76,7 +76,7 @@ const designRules: readonly DesignRule[] = [
     [".click-text", "mb-6 text-xs text-slate-400"],
     ["#heartsContainer", "pointer-events-none fixed inset-0 z-[9999]"],
 
-    [".admin-page", "mx-auto min-h-screen max-w-[1800px] bg-white px-6 py-8 max-md:px-4"],
+    [".admin-page", "mx-auto min-h-screen w-full max-w-[1800px] bg-white px-6 py-8 max-md:px-4"],
     [".admin-header", "flex flex-wrap items-center justify-between gap-6 rounded-3xl bg-linear-to-br from-emerald-50 to-slate-50 p-8 max-sm:p-6"],
     [".admin-header h1", "text-3xl font-semibold tracking-tight text-slate-950"],
     [".admin-header p", "mt-2 text-sm text-slate-600"],
