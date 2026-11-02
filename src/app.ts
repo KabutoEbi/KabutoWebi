@@ -50,28 +50,6 @@ function decorateShell(page: PageName): void {
         });
     }
 
-    const headings: Partial<Record<PageName, [string, string, string]>> = {
-        home: ["Portfolio / KabutoEbi", "つくることを、楽しむ。", "アプリ、ゲーム、電子工作。興味の向くままに作ったものをまとめています。"],
-        product: ["Selected work", "つくったもの", "小さな実験から、じっくり取り組んだ作品まで。これまでの制作を紹介します。"],
-        clothes: ["Original goods", "身につけるアイデア", "オリジナルデザインのグッズをSUZURIで公開しています。"],
-        about: ["About me", "こんにちは、KabutoEbiです。", "プログラミング、ものづくり、ロードバイク。好きなことを少しずつ広げています。"],
-        veryfunny: ["Word play", "言葉であそぶ。", "思いついた言葉遊びを集めました。"],
-        stackstones: ["Browser game", "賽の河原の石積み", "Unityで制作したブラウザゲームです。"],
-        notFound: ["404 / Not found", "ページが見つかりません", "URLを確認するか、ホームから探してみてください。"],
-    };
-    const heading = headings[page];
-    const header = document.querySelector<HTMLElement>(".header");
-    if (heading && header) {
-        const eyebrow = document.createElement("p");
-        eyebrow.className = "eyebrow";
-        eyebrow.textContent = heading[0];
-        header.prepend(eyebrow);
-        const title = header.querySelector("h1");
-        const description = header.querySelector("p:not(.eyebrow)");
-        if (title) title.textContent = heading[1];
-        if (description) description.textContent = heading[2];
-    }
-
     const footer = document.querySelector<HTMLElement>(".footer");
     if (footer) {
         const adminLink = document.createElement("a");

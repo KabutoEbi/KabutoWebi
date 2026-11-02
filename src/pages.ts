@@ -8,10 +8,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="home-container">
             <p class="portfolio-title">KabutoEbi's Portfolio</p>
 
@@ -51,10 +47,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="product-container" id="product-container" aria-live="polite">
             <p class="product-load-message">作品を読み込んでいます...</p>
             <noscript>
@@ -75,10 +67,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="clothes">
             <p><a href="https://suzuri.jp/KabutoEbi" target="_blank" rel="noopener noreferrer">SUZURIページ</a></p>
             <!-- int -->
@@ -105,10 +93,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="profile">
             <div class="introduction">
                     <h2>KabutoEbi</h2>
@@ -218,10 +202,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="veryfunny-container">
             <h2 class="veryfunny-title">veryfunny</h2>
             <p class="veryfunny-subtitle">とてもおもしろい</p>
@@ -305,10 +285,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="stackstones-container">
             <h2 class="stackstones-title">賽の河原の石積み</h2>
             <p class="stackstones-note">※パソコンでのプレイを推奨します※</p>
@@ -350,10 +326,6 @@ export const pageTemplates = {
         </ul>
     </nav>
     <div class="main-content">
-        <header class="header">
-            <h1>KabutoWebi</h1>
-            <p>=KabutoEbi+Web</p>
-        </header>
         <div class="error-container">
             <div class="error-box">
                 <h2 class="error-title">404</h2>
