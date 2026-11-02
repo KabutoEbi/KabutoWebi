@@ -45,7 +45,7 @@ const designRules: readonly DesignRule[] = [
 
     [".profile", "mx-auto flex w-full max-w-4xl flex-col gap-6 px-6 pt-12 max-md:px-4"],
     [".introduction,.tech-stack,.bike-section,.travel-section", "rounded-3xl border border-slate-200 bg-white p-8 shadow-sm max-sm:p-6"],
-    [".introduction", "flex flex-col items-start"],
+    [".introduction", "flex flex-col items-center text-center"],
     [".introduction h2,.tech-stack h2,.bike-section h2,.travel-section h2", "mb-5 text-2xl font-semibold tracking-tight text-slate-950"],
     [".introduction .icon", "mb-6 h-auto w-64 max-w-full object-contain"],
     [".introduction p", "mb-1 leading-relaxed text-slate-600"],
