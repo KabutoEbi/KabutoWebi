@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { applyTailwindDesign } from "./design.js";
 import { getDatabase } from "./firebase.js";
-import { normalizeProduct, type Product, type ProductLink } from "./product-model.js";
+import { compareProducts, normalizeProduct, type Product, type ProductLink } from "./product-model.js";
 
 function safeLink(value: string): string | null {
     try {
@@ -65,9 +65,9 @@ export async function loadProducts(): Promise<void> {
         const published = query(collection(getDatabase(), "products"), where("published", "==", true));
         const snapshot = await getDocs(published);
         const products = snapshot.docs
-            .map((document) => normalizeProduct(document.data()))
+            .map((document) => normalizeProduct(document.data(), document.id))
             .filter((product) => product.title)
-            .sort((a, b) => a.order - b.order);
+            .sort(compareProducts);
 
         container.replaceChildren(...products.map(createProductElement));
         if (products.length === 0) {

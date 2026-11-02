@@ -16,7 +16,7 @@ import {
 import { applyTailwindDesign } from "./design.js";
 import { adminEmail } from "./firebase-config.js";
 import { getAuthentication, getDatabase } from "./firebase.js";
-import { emptyProduct, normalizeProduct, validateProduct, type EditableProduct, type Product } from "./product-model.js";
+import { compareProducts, emptyProduct, normalizeProduct, validateProduct, type EditableProduct, type Product } from "./product-model.js";
 
 let products: EditableProduct[] = [];
 let productCards = new Map<EditableProduct, HTMLDetailsElement>();
@@ -99,6 +99,7 @@ async function saveProduct(product: EditableProduct): Promise<void> {
             product.id = created.id;
         }
         setStatus(`「${data.title}」を保存しました。商品ページにも反映されます。`);
+        products.sort(compareProducts);
         renderProducts();
     } catch (error: unknown) {
         console.error("Product save failed:", error);
@@ -212,7 +213,7 @@ async function refreshProducts(): Promise<void> {
     const snapshot = await getDocs(collection(getDatabase(), "products"));
     products = snapshot.docs
         .map((entry) => normalizeProduct(entry.data(), entry.id))
-        .sort((a, b) => a.order - b.order);
+        .sort(compareProducts);
     renderProducts();
     setStatus(`${products.length}件の商品を読み込みました。`);
 }

@@ -17,6 +17,10 @@ export interface EditableProduct extends Product {
     id?: string;
 }
 
+export function compareProducts(a: EditableProduct, b: EditableProduct): number {
+    return a.order - b.order || (a.id ?? "").localeCompare(b.id ?? "");
+}
+
 export function emptyProduct(order: number): EditableProduct {
     return {
         order,
