@@ -44,8 +44,8 @@ function setStatus(message: string, isError = false): void {
 
 function setBusy(value: boolean): void {
     busy = value;
-    for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button, #admin-logout")) {
-        button.disabled = busy;
+    for (const button of document.querySelectorAll<HTMLButtonElement>("#admin-editor button, #admin-add, #admin-update, #admin-logout")) {
+        button.disabled = busy || (button.id === "admin-update" && products.length === 0);
     }
 }
 
@@ -105,30 +105,39 @@ function checkboxField(label: string, checked: boolean, onChange: (checked: bool
     return field;
 }
 
-async function saveProduct(product: EditableProduct): Promise<void> {
-    const data = { ...dataForFirestore(product), order: products.indexOf(product) + 1 };
-    const issue = validateProduct(data);
-    if (issue) {
-        setStatus(issue, true);
+async function updateProducts(): Promise<void> {
+    if (busy || products.length === 0) return;
+    const updates = products.map((product, index) => ({
+        product,
+        data: { ...dataForFirestore(product), order: index + 1 },
+    }));
+    for (const { product, data } of updates) {
+        const issue = validateProduct(data);
+        if (!issue) continue;
+        const card = productCards.get(product);
+        if (card) {
+            card.open = true;
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        setStatus(`「${data.title || "新しいプロダクト"}」: ${issue}`, true);
         return;
     }
-
     setBusy(true);
     try {
         const database = getDatabase();
         const batch = writeBatch(database);
-        const reference = product.id ? doc(database, "products", product.id) : doc(collection(database, "products"));
-        batch.set(reference, data);
-        queueOrderUpdates(batch, product);
+        const references = updates.map(({ product, data }) => {
+            const reference = product.id ? doc(database, "products", product.id) : doc(collection(database, "products"));
+            batch.set(reference, data);
+            return { product, id: reference.id };
+        });
         await batch.commit();
-        product.id = reference.id;
+        references.forEach(({ product, id }) => { product.id = id; });
         syncLocalOrder();
-        setStatus(data.published
-            ? `「${data.title}」を更新しました。プロダクトページにも反映されます。`
-            : `「${data.title}」を非公開で更新しました。`);
+        setStatus(`${updates.length}件のプロダクトを更新しました。公開中のプロダクトはページにも反映されます。`);
         renderProducts();
     } catch (error: unknown) {
-        console.error("Product save failed:", error);
+        console.error("Product update failed:", error);
         setStatus("更新できませんでした。Firestoreの権限と接続を確認してください。", true);
     } finally {
         setBusy(false);
@@ -262,12 +271,6 @@ function renderProducts(expand?: EditableProduct): void {
         }
         const actions = document.createElement("div");
         actions.className = "admin-card-actions";
-        const save = document.createElement("button");
-        save.type = "button";
-        save.className = "admin-primary-button";
-        save.textContent = "更新";
-        save.addEventListener("click", () => { void saveProduct(product); });
-        actions.appendChild(save);
         const remove = document.createElement("button");
         remove.type = "button";
         remove.className = "admin-delete-button";
@@ -357,6 +360,7 @@ async function showAuthenticated(user: User | null): Promise<void> {
     const login = element("admin-login");
     const editor = element("admin-editor");
     const isAdmin = Boolean(user?.emailVerified && user.email?.toLowerCase() === adminEmail);
+    element("admin-actions").classList.toggle("hidden", !isAdmin);
     element("admin-logout").classList.toggle("hidden", !user);
     login.classList.toggle("hidden", isAdmin);
     editor.classList.toggle("hidden", !isAdmin);
@@ -398,11 +402,12 @@ export function initializeAdmin(): void {
         }
     });
     element("admin-logout").addEventListener("click", () => { void signOut(auth); });
+    element("admin-update").addEventListener("click", () => { void updateProducts(); });
     element("admin-add").addEventListener("click", () => {
         const product = emptyProduct(0);
         products.unshift(product);
         renderProducts(product);
-        setStatus("新しいプロダクトを追加しました。入力後に更新を押してください。");
+        setStatus("新しいプロダクトを追加しました。入力後に上部の更新を押してください。");
     });
     onAuthStateChanged(auth, (user) => { void showAuthenticated(user); });
 }
